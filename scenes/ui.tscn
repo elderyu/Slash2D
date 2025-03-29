@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4oahpe8wqnoj"]
+
+[ext_resource type="Texture2D" uid="uid://drmge20qopucg" path="res://assets/sprites/health_globe_outline.png" id="1_shrlt"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_x1v8o"]
+[ext_resource type="Texture2D" uid="uid://deuria2ojobt2" path="res://assets/sprites/health_globe_progress.png" id="2_qfif2"]
+[ext_resource type="PackedScene" uid="uid://ceqn560tnrhkj" path="res://scenes/inventory.tscn" id="4_xgftt"]
+[ext_resource type="Texture2D" uid="uid://drahohnctshpl" path="res://assets/sprites/experience_bar_frame.png" id="6_xcu3c"]
+[ext_resource type="Texture2D" uid="uid://c3goo6jt00wtg" path="res://assets/sprites/experience_bar.png" id="7_62rys"]
+[ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="8_q66w0"]
+[ext_resource type="PackedScene" uid="uid://bsdwvithl87p1" path="res://scenes/character_sheet.tscn" id="9_bbmt4"]
+
+[node name="ui" type="CanvasLayer"]
+script = ExtResource("1_x1v8o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -101.0
+offset_right = 28.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="health_globe" type="TextureProgressBar" parent="MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("1_shrlt")
+texture_progress = ExtResource("2_qfif2")
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 11.0
+offset_right = 19.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="health_label" type="Label" parent="MarginContainer/Panel/Panel"]
+unique_name_in_owner = true
+z_index = 5
+layout_mode = 2
+offset_left = -12.0
+offset_top = 7.0
+offset_right = 52.0
+offset_bottom = 33.0
+text = "10/10"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -45.0
+offset_right = 31.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control2"]
+layout_mode = 0
+offset_left = -157.0
+offset_top = 10.9999
+offset_right = -44.0
+offset_bottom = 20.9999
+scale = Vector2(3, 3)
+texture = ExtResource("6_xcu3c")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="experience_bar" type="TextureProgressBar" parent="Control2"]
+layout_mode = 0
+offset_left = -154.0
+offset_top = 13.9999
+offset_right = -90.0001
+offset_bottom = 77.9999
+scale = Vector2(5.20222, 0.372818)
+texture_progress = ExtResource("7_62rys")
+
+[node name="experience_label" type="Label" parent="Control2"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 16.0
+offset_right = 44.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("8_q66w0")
+text = "0/10"
+
+[node name="character_sheet" parent="." instance=ExtResource("9_bbmt4")]
+offset_right = -759.0
+offset_bottom = -25.0
+
+[node name="inventory" parent="." instance=ExtResource("4_xgftt")]
+offset_left = 742.0
+offset_top = 285.0
+offset_right = 742.0
+offset_bottom = 285.0

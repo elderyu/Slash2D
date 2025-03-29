@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://drkq5hxpqv7pt"]
+
+[ext_resource type="Texture2D" uid="uid://c2pdm1b7v6qax" path="res://assets/sprites/sword.png" id="1_2lst0"]
+[ext_resource type="Script" path="res://scenes/sword.gd" id="1_lm8d3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4241"]
+size = Vector2(13.5384, 2.8284)
+
+[node name="sword" type="Area2D"]
+script = ExtResource("1_lm8d3")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_2lst0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.27525, -2.29377)
+rotation = -0.789452
+shape = SubResource("RectangleShape2D_v4241")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

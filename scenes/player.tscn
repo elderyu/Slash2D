@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://berqu5o75bccl"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_oojp3"]
+[ext_resource type="PackedScene" uid="uid://f04u2jux3xav" path="res://scenes/weapon.tscn" id="2_1t8rx"]
+[ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/sword_a_3.png" id="2_d27ht"]
+[ext_resource type="Texture2D" uid="uid://bjsql0ncotbsu" path="res://assets/sprites/knight.png" id="3_s3120"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1n8w"]
+atlas = ExtResource("3_s3120")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpcjv"]
+atlas = ExtResource("3_s3120")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewjg1"]
+atlas = ExtResource("3_s3120")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlkop"]
+atlas = ExtResource("3_s3120")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yn7cp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1n8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpcjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewjg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlkop")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5sah"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_21q1o"]
+resource_name = "attack"
+length = 0.40001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y40bx"]
+_data = {
+"attack": SubResource("Animation_21q1o")
+}
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_oojp3")
+
+[node name="weapon_on_back_left" type="Sprite2D" parent="."]
+position = Vector2(1.00002, -12)
+rotation = 3.14159
+texture = ExtResource("2_d27ht")
+
+[node name="weapon_on_back_right" type="Sprite2D" parent="."]
+position = Vector2(2.00272e-05, -12)
+rotation = 3.14159
+texture = ExtResource("2_d27ht")
+flip_h = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_yn7cp")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_n5sah")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="timer_attack" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y40bx")
+}
+
+[node name="weapon_right" parent="." instance=ExtResource("2_1t8rx")]
+
+[node name="weapon_left" parent="." instance=ExtResource("2_1t8rx")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,12 @@
+res://scenes/game.tscn
+res://scenes/player.tscn
+res://scenes/damage_zone.tscn
+res://scenes/enemy.tscn
+res://scenes/inventory.tscn
+res://scenes/ui.tscn
+res://scenes/weapon.tscn
+res://scenes/character_sheet.tscn
+res://scripts/ui.gd
+res://scripts/player.gd
+res://scripts/enemy.gd
+res://scripts/weapon.gd

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd6iqv1ry3kro"]
+
+[ext_resource type="Texture2D" uid="uid://d3immbkvx8u4v" path="res://assets/sprites/inventory_cell.png" id="1_7nlc5"]
+
+[node name="Panel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 75.0
+offset_bottom = 72.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 3)
+texture = ExtResource("1_7nlc5")
+centered = false

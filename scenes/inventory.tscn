@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceqn560tnrhkj"]
+
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_4lcfi"]
+[ext_resource type="Texture2D" uid="uid://bs0m4wwyp1krk" path="res://assets/sprites/inventory_background.png" id="2_xmkjj"]
+[ext_resource type="PackedScene" uid="uid://bd6iqv1ry3kro" path="res://scenes/inventory_slot.tscn" id="3_lxoxv"]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4lcfi")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 123.0
+offset_bottom = 103.0
+scale = Vector2(3.22529, 2.8555)
+texture = ExtResource("2_xmkjj")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = -45.5
+offset_right = 69.5
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Panel1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel10" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel11" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
+
+[node name="Panel12" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
+layout_mode = 2
