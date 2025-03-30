@@ -8,11 +8,9 @@ const JUMP_VELOCITY = -300.0
 @onready var death_timer = $Timer
 @onready var ui = $"../ui"
 @onready var timer_attack = $timer_attack
-@onready var weapon_collider = %weapon_collider
 @onready var animation_player = $AnimationPlayer
 @onready var weapon_on_back_right = $weapon_on_back_right
 @onready var weapon_on_back_left = $weapon_on_back_left
-@onready var strike = $strike
 @onready var player_sprite = $AnimatedSprite2D
 @onready var weapon_right = $weapon_right
 @onready var weapon_left = $weapon_left
@@ -46,8 +44,8 @@ func _physics_process(delta):
 		player_sprite.flip_h = true
 	elif directionx > 0:
 		player_sprite.flip_h = false
-
-	move_and_slide()
+	
+	move_and_collide(velocity * delta)
 
 func attack_right():
 	print("attack right")
@@ -68,11 +66,14 @@ func attack_left():
 	weapon_left.rotation = vector.angle() + 3.14/4
 	weapon_left.attack(weapon_on_back_left)
 
-func damage_player():
+func damage_player(damage_zone: damage_zone):
 	Globals.player_health_current = Globals.player_health_current - 1
 	
 	ui.ui_update_health()
-	
+#	print(damage_zone.global_position)
+	velocity = (position - damage_zone.global_position).normalized() * 1000 * 1# Vector2(-500, 0)
+	print(velocity)
+
 	if Globals.player_health_current <= 0:
 		Engine.time_scale = 0.5
 		print("You died!")

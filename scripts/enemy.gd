@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 class_name enemy
 
 @onready var animation = $animation
@@ -14,8 +14,8 @@ class_name enemy
 @onready var slime_sound_damage = $AudioStreamPlayer2D
 @onready var slime_sound_death = $AudioStreamPlayer2D2
 
-var starting_life = 10
-var life = starting_life
+var starting_life = 10 as float
+var life = starting_life as float
 
 var blink_count = 10
 var current_blink = 0
@@ -30,10 +30,12 @@ func _on_ready():
 	animation_player.play("idle")
 	pass # Replace with function body.
 	
-func _process(delta):
-	if is_aggroed && !(life <= 0):
+func _physics_process(delta):
+	if is_aggroed && life > 0:
 		var direction = (player.position - position).normalized()
-		position += direction * speed * delta
+		velocity = direction * speed
+		print("velocity enemy" + str(velocity))
+		move_and_collide(velocity * delta)
 	pass
 	
 func damage_enemy():
@@ -87,7 +89,22 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_collision_aggro_body_entered(body):
 	print(body)
 	if body is player:
-		var p = body as player
-		print(p.position)
 		is_aggroed = true
+#		var p = body as player
+#		print(p.position)
+#		is_aggroed = true
+	pass # Replace with function body.
+
+
+func _on_mouse_entered():
+	ui.enemy_health_toggle(self)
+	pass # Replace with function body.
+
+
+func _on_mouse_exited():
+	ui.enemy_health_toggle(self)
+	pass # Replace with function body.
+
+
+func _on_timer_attack_cooldown_timeout():
 	pass # Replace with function body.

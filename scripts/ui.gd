@@ -7,11 +7,15 @@ class_name ui
 @onready var experience_bar = $Control2/experience_bar
 @onready var experience_label = $Control2/experience_label
 @onready var character_sheet: character_sheet = $character_sheet
+@onready var enemy_bar = $enemy_bar
+@onready var enemy_bar_health = $label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	inventory.visible = false
 	character_sheet.visible = false
+	enemy_bar.visible = false
+	enemy_bar_health.visible = false
 	ui_update_health()
 	ui_experience_update()
 	pass # Replace with function body.
@@ -39,10 +43,19 @@ func ui_experience_update():
 		
 	
 func inventory_toggle():
-	inventory.visible = !inventory.visible
+	inventory.toggle()
 	
 func character_sheet_toggle():
 	character_sheet.visible = !character_sheet.visible
+	
+func enemy_health_toggle(enemy: enemy):
+	print("toggle enemy health")
+	print(enemy)
+	enemy_bar.visible = !enemy_bar.visible
+	enemy_bar_health.text = str(enemy.life) + "/" + str(enemy.starting_life)
+	enemy_bar_health.visible = !enemy_bar_health.visible
+	enemy_bar.value = enemy.life/enemy.starting_life * 100
+	print(enemy.life)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -20,8 +20,8 @@ func _on_animation_player_animation_finished(anim_name):
 	pass # Replace with function body.
 
 
-func _on_area_2d_area_entered(area):
-	if area is enemy and visible:
-		var enemy = area as enemy
+func _on_area_2d_body_entered(body):
+	if body is enemy and visible:
+		var enemy = body as enemy
 		enemy.damage_enemy()
 	pass # Replace with function body.

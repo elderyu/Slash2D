@@ -1,5 +1,22 @@
 extends Control
 
+@onready var chest_close = $chest_close
+@onready var chest_open = $chest_open
+
+func _on_ready():
+	visible = false
+	pass # Replace with function body.
+
+func toggle():
+	if visible:
+		chest_close.play()
+	else:
+		chest_open.play()
+	visible = !visible
+	print("toggle")
+	
+	
+	
 #@onready var inventory_grid = $Inventory/GridContainer
 #@onready var character_slots = $CharacterSheet/Slots
 #
@@ -63,3 +80,5 @@ extends Control
 #			var item_texture = TextureRect.new()
 #			item_texture.texture = character_slots[key]["texture"]
 #			character_slots[key].add_child(item_texture)
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4oahpe8wqnoj"]
+[gd_scene load_steps=12 format=3 uid="uid://b4oahpe8wqnoj"]
 
 [ext_resource type="Texture2D" uid="uid://drmge20qopucg" path="res://assets/sprites/health_globe_outline.png" id="1_shrlt"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_x1v8o"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://drahohnctshpl" path="res://assets/sprites/experience_bar_frame.png" id="6_xcu3c"]
 [ext_resource type="Texture2D" uid="uid://c3goo6jt00wtg" path="res://assets/sprites/experience_bar.png" id="7_62rys"]
 [ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="8_q66w0"]
+[ext_resource type="Texture2D" uid="uid://cwqg61r6dhdff" path="res://assets/sprites/health_bar.png" id="9_2xt0e"]
 [ext_resource type="PackedScene" uid="uid://bsdwvithl87p1" path="res://scenes/character_sheet.tscn" id="9_bbmt4"]
+[ext_resource type="Texture2D" uid="uid://c4lxv0o4s4btx" path="res://assets/sprites/health_bar_under.png" id="10_aq6is"]
+[ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="10_eyi44"]
 
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_x1v8o")
@@ -112,11 +115,29 @@ theme_override_fonts/font = ExtResource("8_q66w0")
 text = "0/10"
 
 [node name="character_sheet" parent="." instance=ExtResource("9_bbmt4")]
-offset_right = -759.0
-offset_bottom = -25.0
+offset_left = -10.0
+offset_top = -85.0
+offset_right = -761.0
+offset_bottom = -161.0
 
 [node name="inventory" parent="." instance=ExtResource("4_xgftt")]
-offset_left = 742.0
-offset_top = 285.0
-offset_right = 742.0
-offset_bottom = 285.0
+offset_left = 811.0
+offset_top = -83.0
+offset_right = 811.0
+offset_bottom = -83.0
+
+[node name="label" parent="." instance=ExtResource("10_eyi44")]
+offset_left = 450.0
+offset_top = 33.0
+offset_right = -516.0
+offset_bottom = -586.0
+
+[node name="enemy_bar" type="TextureProgressBar" parent="."]
+offset_left = 447.0
+offset_top = 16.0
+offset_right = 463.0
+offset_bottom = 32.0
+scale = Vector2(11.2682, 0.802715)
+value = 100.0
+texture_under = ExtResource("10_aq6is")
+texture_progress = ExtResource("9_2xt0e")

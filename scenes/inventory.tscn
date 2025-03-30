@@ -1,18 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceqn560tnrhkj"]
+[gd_scene load_steps=6 format=3 uid="uid://ceqn560tnrhkj"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_4lcfi"]
 [ext_resource type="Texture2D" uid="uid://bs0m4wwyp1krk" path="res://assets/sprites/inventory_background.png" id="2_xmkjj"]
 [ext_resource type="PackedScene" uid="uid://bd6iqv1ry3kro" path="res://scenes/inventory_slot.tscn" id="3_lxoxv"]
+[ext_resource type="AudioStream" uid="uid://ikowhcu7sjy7" path="res://assets/sounds/chest_close.wav" id="4_bqv7a"]
+[ext_resource type="AudioStream" uid="uid://bpvrpluojwl50" path="res://assets/sounds/chest_open.wav" id="5_j2t5c"]
 
 [node name="inventory" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 775.0
+offset_top = 12.0
+offset_right = 775.0
+offset_bottom = 12.0
 script = ExtResource("1_4lcfi")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 123.0
-offset_bottom = 103.0
+offset_left = -134.0
+offset_top = -3.0
+offset_right = 22.0
+offset_bottom = 217.0
 scale = Vector2(3.22529, 2.8555)
 texture = ExtResource("2_xmkjj")
 patch_margin_left = 6
@@ -27,13 +35,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.5
-offset_top = -45.5
-offset_right = 69.5
-offset_bottom = 74.5
+offset_left = -74.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 4
+columns = 10
 
 [node name="Panel1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
 layout_mode = 2
@@ -65,8 +73,10 @@ layout_mode = 2
 [node name="Panel10" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
 layout_mode = 2
 
-[node name="Panel11" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
-layout_mode = 2
+[node name="chest_close" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bqv7a")
 
-[node name="Panel12" parent="NinePatchRect/GridContainer" instance=ExtResource("3_lxoxv")]
-layout_mode = 2
+[node name="chest_open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_j2t5c")
+
+[connection signal="ready" from="." to="." method="_on_ready"]

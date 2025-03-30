@@ -4,10 +4,11 @@
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
-offset_right = 75.0
-offset_bottom = 72.0
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, 3)
 texture = ExtResource("1_7nlc5")
 centered = false
