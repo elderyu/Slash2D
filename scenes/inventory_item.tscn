@@ -14,7 +14,7 @@ offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_4y0xs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

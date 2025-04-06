@@ -85,7 +85,7 @@ func attack_left():
 func damage_player(damage_zone: damage_zone):
 	Globals.player_health_current = Globals.player_health_current - 1
 	
-	ui.ui_update_health()
+	ui.ui_health_update()
 	player_is_knocked_back = true
 	damage_zone_position = damage_zone.global_position
 	velocity = (position - damage_zone_position).normalized() * 500 * 1

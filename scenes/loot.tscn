@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c564awkli8egg"]
+[gd_scene load_steps=5 format=3 uid="uid://c564awkli8egg"]
 
 [ext_resource type="Script" path="res://scripts/loot.gd" id="1_xptfd"]
 [ext_resource type="Texture2D" uid="uid://clvbfkegypfwy" path="res://assets/sprites/gem_blue.png" id="2_u0p4h"]
+[ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="4_tonsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joopv"]
 size = Vector2(39, 36)
@@ -19,4 +20,20 @@ texture = ExtResource("2_u0p4h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_joopv")
 
+[node name="item_name" parent="." instance=ExtResource("4_tonsl")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -41.0
+offset_top = -31.0
+offset_right = 44.0
+offset_bottom = -12.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Shiny gem"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="ready" from="item_name" to="." method="_on_item_name_ready"]

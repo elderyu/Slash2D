@@ -7,6 +7,10 @@ var item_class = preload("res://scenes/inventory_item.tscn")
 
 var img = null
 
+func _on_ready():
+	$item_name.visible = false
+	pass # Replace with function body.
+
 func set_image(image):
 	sprite.texture = load(image)
 	img = image
@@ -17,10 +21,19 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		var inventory_slots = Globals.find_node_by_name(get_parent(), "inventory_slots").get_children()
 		for i in inventory_slots:
 			if i.item == null:
-#				var item = item_class.instantiate()
-#				add_child(item)
-#				item.image_set(img)
 				i.slot_item_loot(self)
 				break
 		queue_free()
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_entered():
+	print("show popup - loot info")
+	$item_name.visible = true
+	pass # Replace with function body.
+
+
+func _on_area_2d_mouse_exited():
+	print("hide popup - loot info")
+	$item_name.visible = false
 	pass # Replace with function body.

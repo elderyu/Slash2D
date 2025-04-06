@@ -7,11 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c3goo6jt00wtg" path="res://assets/sprites/experience_bar.png" id="7_62rys"]
 [ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="8_q66w0"]
 [ext_resource type="Texture2D" uid="uid://cwqg61r6dhdff" path="res://assets/sprites/health_bar.png" id="9_2xt0e"]
+[ext_resource type="PackedScene" uid="uid://bsdwvithl87p1" path="res://scenes/character_sheet.tscn" id="9_bbmt4"]
 [ext_resource type="Texture2D" uid="uid://c4lxv0o4s4btx" path="res://assets/sprites/health_bar_under.png" id="10_aq6is"]
 [ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="10_eyi44"]
 [ext_resource type="AudioStream" uid="uid://ikowhcu7sjy7" path="res://assets/sounds/chest_close.wav" id="12_g52cq"]
 [ext_resource type="AudioStream" uid="uid://bpvrpluojwl50" path="res://assets/sounds/chest_open.wav" id="13_866sr"]
-[ext_resource type="Script" path="res://scripts/inventory.gd" id="13_dlr1a"]
 [ext_resource type="Texture2D" uid="uid://bs0m4wwyp1krk" path="res://assets/sprites/inventory_background.png" id="14_gco5x"]
 [ext_resource type="PackedScene" uid="uid://bd6iqv1ry3kro" path="res://scenes/inventory_slot.tscn" id="15_63ep2"]
 [ext_resource type="Texture2D" uid="uid://bl5f2ck38h8pl" path="res://assets/sprites/button_level_skill.png" id="15_p7qnr"]
@@ -118,6 +118,13 @@ offset_bottom = 39.0
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "0/10"
 
+[node name="character_sheet" parent="." instance=ExtResource("9_bbmt4")]
+unique_name_in_owner = true
+offset_left = -16.0
+offset_top = -12.0
+offset_right = -656.0
+offset_bottom = -77.0
+
 [node name="enemy_bar" type="TextureProgressBar" parent="."]
 offset_left = 235.0
 offset_top = 12.0
@@ -160,7 +167,6 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
-script = ExtResource("13_dlr1a")
 
 [node name="inventory_slots" type="GridContainer" parent="inventory"]
 unique_name_in_owner = true
@@ -375,19 +381,12 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="slot_armor" parent="inventory/HBoxContainer/equipment_left" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="slot_gloves" parent="inventory/HBoxContainer/equipment_left" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="slot_leggings" parent="inventory/HBoxContainer/equipment_left" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="slot_weapon_1" parent="inventory/HBoxContainer/equipment_left" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="inventory/HBoxContainer"]
@@ -408,23 +407,18 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="slot_ring_1" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="slot_ring_2" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="slot_amulet" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
 layout_mode = 2
 
-[node name="slot_weapon_2" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
-unique_name_in_owner = true
+[node name="Panel4" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
 layout_mode = 2
 
-[node name="character_sheet" type="NinePatchRect" parent="."]
-unique_name_in_owner = true
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = 16.0
 offset_top = 21.0
 offset_right = 279.0
@@ -435,65 +429,65 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="character_sheet"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 13.0
 offset_right = 265.0
 offset_bottom = 247.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="character_sheet/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Damage2" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer"]
+[node name="Damage2" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "Level"
 
-[node name="Damage" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer"]
+[node name="Damage" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "Damage"
 
-[node name="Label2" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "Health
 "
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="character_sheet/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="text_level" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer2"]
+[node name="text_level" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "1"
 
-[node name="text_damage" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer2"]
+[node name="text_damage" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "1"
 
-[node name="text_health" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer2"]
+[node name="text_health" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "10"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="character_sheet/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="NinePatchRect/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="button_increase_damage" type="TextureButton" parent="character_sheet/HBoxContainer/VBoxContainer3"]
+[node name="button_increase_damage" type="TextureButton" parent="NinePatchRect/HBoxContainer/VBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("15_p7qnr")
 
-[node name="button_increase_health" type="TextureButton" parent="character_sheet/HBoxContainer/VBoxContainer3"]
+[node name="button_increase_health" type="TextureButton" parent="NinePatchRect/HBoxContainer/VBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("15_p7qnr")

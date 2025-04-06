@@ -6,6 +6,14 @@
 			"name": "gold",
 			"amount_min": 1,
 			"amount_max": 3
+		},
+		{
+			"chance": 0.25,
+			"name": "leather_helmet"
+		},
+		{
+			"chance": 0.25,
+			"name": null
 		}
 	]
 }

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "leather helmet",
+        "image": "test1.png",
+        "armor": 1
+    },
+    {
+        "name": "studded helmet",
+        "image": "test2.png",
+        "armor": 2
+    },
+    {
+        "name": "plate helmet",
+        "image": "test3.png",
+        "armor": 3
+    }
+]

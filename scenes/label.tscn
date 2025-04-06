@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ds71mq85gkd6n"]
 
-[ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="1_i02c4"]
+[ext_resource type="FontFile" uid="uid://dj1so6hwwbmm1" path="res://assets/fonts/qager-font/Qager-zrlmw.ttf" id="1_otags"]
 
 [node name="label" type="Label"]
 anchors_preset = 15
@@ -8,5 +8,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_i02c4")
+theme_override_fonts/font = ExtResource("1_otags")
 text = "test text 123"

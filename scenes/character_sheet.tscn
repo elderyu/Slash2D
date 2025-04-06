@@ -1,14 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsdwvithl87p1"]
+[gd_scene load_steps=5 format=3 uid="uid://dmd1uk7nmxi0u"]
 
 [ext_resource type="Texture2D" uid="uid://bs0m4wwyp1krk" path="res://assets/sprites/inventory_background.png" id="1_886pg"]
-[ext_resource type="Script" path="res://scripts/character_sheet.gd" id="1_iv4ko"]
 [ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="2_bbxj0"]
 [ext_resource type="Texture2D" uid="uid://bl5f2ck38h8pl" path="res://assets/sprites/button_level_skill.png" id="3_erhtj"]
+
+[sub_resource type="GDScript" id="GDScript_gbwfy"]
+script/source = "extends Control
+class_name character_sheet
+
+@onready var button_increase_damage = $NinePatchRect/HBoxContainer/VBoxContainer3/button_increase_damage
+@onready var button_increase_health = $NinePatchRect/HBoxContainer/VBoxContainer3/button_increase_health
+@onready var text_damage = $NinePatchRect/HBoxContainer/VBoxContainer2/text_damage
+@onready var text_health = $NinePatchRect/HBoxContainer/VBoxContainer2/text_health
+@onready var text_level = $NinePatchRect/HBoxContainer/VBoxContainer2/text_level
+@onready var health_globe = %health_globe
+@onready var health_label = %health_label
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+#	connect(\"character_updated\", _on_character_updated)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+	
+"
 
 [node name="character_sheet" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_iv4ko")
+script = SubResource("GDScript_gbwfy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0

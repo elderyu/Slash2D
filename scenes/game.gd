@@ -5,12 +5,14 @@ extends Node2D
 @onready var inventory_chest = $player/inventory_chest
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ui.visible = true
 	inventory_chest.visible = false
 	#	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 	pass # Replace with function body.
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if Input.is_action_just_pressed("inventory"):
 		ui.inventory_toggle()
 		inventory_chest_toggle()
