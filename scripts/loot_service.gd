@@ -3,8 +3,12 @@ class_name loot_service
 
 var loot = preload("res://scenes/loot.tscn")
 
+var loot_table = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var loot_table_file = FileAccess.open("res://item_data/loot_table.json", FileAccess.READ)
+	loot_table = JSON.parse_string(loot_table_file.get_as_text())
 	pass # Replace with function body.
 
 

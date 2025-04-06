@@ -2,7 +2,7 @@ extends Control
 
 @onready var chest_close = $chest_close
 @onready var chest_open = $chest_open
-@onready var inventory_slots = $NinePatchRect2/GridContainer
+@onready var inventory_slots = %inventory_slots
 
 
 var holding_item = null
@@ -13,12 +13,6 @@ func _on_ready():
 		i.gui_input.connect(slot_gui_input.bind(i))
 	pass # Replace with function body.
 	
-#func _process(delta):
-#	if(holding_item != null):
-#		print("test")
-#		holding_item.global_position = get_global_mouse_position()
-##	print("test")
-
 func _input(event):
 	if holding_item:
 		holding_item.global_position = get_global_mouse_position()

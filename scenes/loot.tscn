@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c564awkli8egg"]
+[gd_scene load_steps=4 format=3 uid="uid://c564awkli8egg"]
 
 [ext_resource type="Script" path="res://scripts/loot.gd" id="1_xptfd"]
+[ext_resource type="Texture2D" uid="uid://clvbfkegypfwy" path="res://assets/sprites/gem_blue.png" id="2_u0p4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_joopv"]
 size = Vector2(39, 36)
 
 [node name="loot" type="Node2D"]
+z_index = 999
 script = ExtResource("1_xptfd")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(-5.96046e-08, -1.42109e-14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_u0p4h")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,0 +1,11 @@
+{
+	"name": "slime",
+	"loot": [
+		{
+			"chance": 0.5,
+			"name": "gold",
+			"amount_min": 1,
+			"amount_max": 3
+		}
+	]
+}

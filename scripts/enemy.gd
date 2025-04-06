@@ -14,6 +14,8 @@ class_name enemy
 @onready var slime_sound_damage = $AudioStreamPlayer2D
 @onready var slime_sound_death = $AudioStreamPlayer2D2
 
+var loot = preload("res://scenes/loot.tscn")
+
 var starting_life = 3 as float
 var life = starting_life as float
 
@@ -77,8 +79,12 @@ func _on_timer_death_timeout():
 		animation.visible = 0
 		var monster_experience = 1
 		ui.ui_experience_gain(monster_experience)
-		loot_service.generate_loot(position)
-	
+		var loot_instance = loot.instantiate()
+		get_parent().add_child(loot_instance)
+		print(randi_range(0, Gems.images.size() - 1))
+		var gem_index = randi_range(0, Gems.images.size() - 1)
+		loot_instance.set_image(Gems.images[gem_index])
+		loot_instance.position = position
 	pass # Replace with function body.
 
 func _on_animation_player_animation_finished(anim_name):
@@ -98,13 +104,6 @@ func _on_collision_aggro_body_entered(body):
 	print(body)
 	if body is player:
 		is_aggroed = true
-#		var p = body as player
-#		print(p.position)
-#		is_aggroed = true
-	pass # Replace with function body.
-
-
-func _on_timer_attack_cooldown_timeout():
 	pass # Replace with function body.
 
 
