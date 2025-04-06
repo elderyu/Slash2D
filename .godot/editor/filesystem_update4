@@ -11,3 +11,6 @@ res://scripts/globals.gd
 res://scripts/enemy.gd
 res://scenes/inventory_slot.gd
 res://scripts/inventory_item.gd
+res://scenes/ui.tscn
+res://scripts/ui.gd
+res://scenes/enemy.tscn

@@ -126,12 +126,6 @@ offset_top = 17.0
 offset_right = 778.0
 offset_bottom = 17.0
 
-[node name="label" parent="." instance=ExtResource("10_eyi44")]
-offset_left = 254.0
-offset_top = 33.0
-offset_right = -224.0
-offset_bottom = -308.0
-
 [node name="enemy_bar" type="TextureProgressBar" parent="."]
 offset_left = 235.0
 offset_top = 12.0
@@ -141,3 +135,16 @@ scale = Vector2(11.2682, 0.802715)
 value = 100.0
 texture_under = ExtResource("10_aq6is")
 texture_progress = ExtResource("9_2xt0e")
+
+[node name="label" parent="." instance=ExtResource("10_eyi44")]
+offset_left = 247.0
+offset_top = 9.0
+offset_right = -231.0
+offset_bottom = -332.0
+
+[node name="enemy_name" parent="." instance=ExtResource("10_eyi44")]
+offset_left = 250.0
+offset_top = 26.0
+offset_right = -241.0
+offset_bottom = -315.0
+text = "enemy name"

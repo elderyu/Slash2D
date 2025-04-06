@@ -29,6 +29,8 @@ var speed_damaged = 10
 var speed = speed_normal
 var enemy_is_knocked_back = false
 
+var display_name = "Slime"
+
 func _on_ready():
 	animation_player.play("idle")
 	pass # Replace with function body.

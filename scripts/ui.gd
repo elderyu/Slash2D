@@ -16,6 +16,7 @@ func _ready():
 	character_sheet.visible = false
 	enemy_bar.visible = false
 	enemy_bar_health.visible = false
+	$enemy_name.visible = false
 	ui_update_health()
 	ui_experience_update()
 	pass # Replace with function body.
@@ -48,13 +49,15 @@ func character_sheet_toggle():
 	character_sheet.visible = !character_sheet.visible
 	
 func enemy_health_toggle(enemy: enemy):
-#	print("toggle enemy health")
-#	print(enemy)
-	enemy_bar.visible = !enemy_bar.visible
 	enemy_bar_health.text = str(enemy.life) + "/" + str(enemy.starting_life)
 	enemy_bar_health.visible = !enemy_bar_health.visible
+	
 	enemy_bar.value = enemy.life/enemy.starting_life * 100
-#	print(enemy.life)
+	enemy_bar.visible = !enemy_bar.visible
+	
+	$enemy_name.text = enemy.display_name
+	$enemy_name.visible = !$enemy_name.visible
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
