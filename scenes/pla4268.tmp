@@ -1,11 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://berqu5o75bccl"]
+[gd_scene load_steps=13 format=3 uid="uid://berqu5o75bccl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oojp3"]
 [ext_resource type="PackedScene" uid="uid://f04u2jux3xav" path="res://scenes/weapon.tscn" id="2_1t8rx"]
 [ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/sword_a_3.png" id="2_d27ht"]
 [ext_resource type="Texture2D" uid="uid://bjsql0ncotbsu" path="res://assets/sprites/knight.png" id="3_s3120"]
-[ext_resource type="AudioStream" uid="uid://wi6usqjdde2q" path="res://assets/sounds/player_damage.wav" id="5_xqce4"]
-[ext_resource type="AudioStream" uid="uid://c0jjr80nr33k7" path="res://assets/sounds/player_death.wav" id="6_wrcxf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1n8w"]
 atlas = ExtResource("3_s3120")
@@ -76,7 +74,7 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_7dsit")
 
 [node name="Timer" type="Timer" parent="."]
@@ -91,29 +89,8 @@ libraries = {
 }
 
 [node name="weapon_right" parent="." instance=ExtResource("2_1t8rx")]
-visible = false
 
 [node name="weapon_left" parent="." instance=ExtResource("2_1t8rx")]
-visible = false
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -8)
-emitting = false
-amount = 16
-lifetime = 0.3
-one_shot = true
-speed_scale = 0.5
-explosiveness = 0.8
-direction = Vector2(0, -100)
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-color = Color(0.957031, 0.018692, 0.106661, 1)
-
-[node name="sound_player_damage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_xqce4")
-
-[node name="sound_player_death" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_wrcxf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]

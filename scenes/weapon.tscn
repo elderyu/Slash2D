@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://f04u2jux3xav"]
+[gd_scene load_steps=16 format=3 uid="uid://f04u2jux3xav"]
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_0vdpj"]
 [ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/sword_a_3.png" id="2_fke8v"]
 [ext_resource type="Texture2D" uid="uid://blyakxk7dxx5d" path="res://assets/sprites/strike2.png" id="3_clkhe"]
 [ext_resource type="Texture2D" uid="uid://bcocts2le0xae" path="res://assets/sprites/sword_swoosh.png" id="3_xlmhr"]
-[ext_resource type="Texture2D" uid="uid://bjsql0ncotbsu" path="res://assets/sprites/knight.png" id="5_lv5jt"]
 [ext_resource type="AudioStream" uid="uid://7rmrvvfbi84e" path="res://assets/sounds/sword-swoosh_1.wav" id="6_n07i4"]
 
 [sub_resource type="Animation" id="Animation_8tja5"]
@@ -246,23 +245,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0o67r"]
 size = Vector2(4, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wi5h4"]
-atlas = ExtResource("5_lv5jt")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ns7lr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wi5h4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="weapon" type="Node2D"]
-visible = false
 script = ExtResource("1_0vdpj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -287,11 +270,6 @@ texture = ExtResource("2_fke8v")
 position = Vector2(1.06066, -1.06066)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_0o67r")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(0, -5)
-sprite_frames = SubResource("SpriteFrames_ns7lr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_n07i4")

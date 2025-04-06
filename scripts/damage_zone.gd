@@ -9,7 +9,7 @@ var p = ""
 
 func _on_body_entered(body):
 	print(body)
-	if body is player:
+	if body is player && is_attack_ready:
 		p = body as player
 		damage_player()
 		

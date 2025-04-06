@@ -14,7 +14,7 @@ class_name enemy
 @onready var slime_sound_damage = $AudioStreamPlayer2D
 @onready var slime_sound_death = $AudioStreamPlayer2D2
 
-var starting_life = 10 as float
+var starting_life = 3 as float
 var life = starting_life as float
 
 var blink_count = 10
@@ -25,21 +25,29 @@ var is_aggroed = false
 var speed_normal = 50
 var speed_damaged = 10
 var speed = speed_normal
+var enemy_is_knocked_back = false
 
 func _on_ready():
 	animation_player.play("idle")
 	pass # Replace with function body.
 	
 func _physics_process(delta):
+	if enemy_is_knocked_back:
+		move_toward(velocity.x, 0, speed)
+		move_toward(velocity.y, 0, speed)
+		move_and_collide(velocity * delta)
+		enemy_is_knocked_back = false
+		
 	if is_aggroed && life > 0:
 		var direction = (player.position - position).normalized()
 		velocity = direction * speed
-		print("velocity enemy" + str(velocity))
 		move_and_collide(velocity * delta)
 	pass
 	
-func damage_enemy():
+func damage_enemy(weapon: weapon):
 	speed = speed_damaged
+	velocity = (position - player.global_position) * 30
+	enemy_is_knocked_back = true
 	life = life - Globals.player_damage
 	particles.restart()
 	particles.emitting = true
@@ -96,15 +104,15 @@ func _on_collision_aggro_body_entered(body):
 	pass # Replace with function body.
 
 
-func _on_mouse_entered():
-	ui.enemy_health_toggle(self)
-	pass # Replace with function body.
-
-
-func _on_mouse_exited():
-	ui.enemy_health_toggle(self)
-	pass # Replace with function body.
-
-
 func _on_timer_attack_cooldown_timeout():
+	pass # Replace with function body.
+
+
+func _on_health_show_area_mouse_entered():
+	ui.enemy_health_toggle(self)
+	pass # Replace with function body.
+
+
+func _on_health_show_area_mouse_exited():
+	ui.enemy_health_toggle(self)
 	pass # Replace with function body.

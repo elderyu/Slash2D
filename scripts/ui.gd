@@ -21,10 +21,9 @@ func _ready():
 	pass # Replace with function body.
 	
 func ui_update_health():
-	print("test")
-	print(health_label.text)
+#	print(health_label.text)
 	health_label.text = str(Globals.player_health_current) + "/" + str(Globals.player_health_starting)
-	print(health_label.text)
+#	print(health_label.text)
 	health_globe.value = Globals.player_health_current/Globals.player_health_starting * 100
 
 func ui_experience_gain(monster_experience):
@@ -49,13 +48,13 @@ func character_sheet_toggle():
 	character_sheet.visible = !character_sheet.visible
 	
 func enemy_health_toggle(enemy: enemy):
-	print("toggle enemy health")
-	print(enemy)
+#	print("toggle enemy health")
+#	print(enemy)
 	enemy_bar.visible = !enemy_bar.visible
 	enemy_bar_health.text = str(enemy.life) + "/" + str(enemy.starting_life)
 	enemy_bar_health.visible = !enemy_bar_health.visible
 	enemy_bar.value = enemy.life/enemy.starting_life * 100
-	print(enemy.life)
+#	print(enemy.life)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

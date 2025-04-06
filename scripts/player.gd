@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name player
 
-const SPEED = 130.0
+const SPEED = 50.0
 const JUMP_VELOCITY = -300.0
 
 @onready var collision = $CollisionShape2D
@@ -14,13 +14,20 @@ const JUMP_VELOCITY = -300.0
 @onready var player_sprite = $AnimatedSprite2D
 @onready var weapon_right = $weapon_right
 @onready var weapon_left = $weapon_left
+@onready var particles = $CPUParticles2D
+@onready var sound_player_damage = $sound_player_damage
+@onready var sound_player_death = $sound_player_death
 
 var middle_of_the_body = Vector2(0, -8)
 var is_attacking_weapon_right = false
+var player_is_knocked_back: bool = false
+var damage_zone_position = null
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var falling_gravity = gravity * 1.5
+
+var stop = false
 
 func _ready():
 	pass
@@ -28,6 +35,13 @@ func _ready():
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	if player_is_knocked_back:
+		move_toward(velocity.x, 0, SPEED)
+		move_toward(velocity.y, 0, SPEED)
+		move_and_collide(velocity * delta)
+		player_is_knocked_back = false
+		return
+	
 	var directionx = Input.get_axis("move_left", "move_right")
 	if directionx:
 		velocity.x = directionx * SPEED
@@ -44,11 +58,13 @@ func _physics_process(delta):
 		player_sprite.flip_h = true
 	elif directionx > 0:
 		player_sprite.flip_h = false
-	
+		
+#	print(velocity)
+	move_and_slide()
 	move_and_collide(velocity * delta)
 
 func attack_right():
-	print("attack right")
+#	print("attack right")
 	
 	var mouse_position = get_local_mouse_position()
 	var vector = mouse_position - middle_of_the_body
@@ -58,7 +74,7 @@ func attack_right():
 	weapon_right.attack(weapon_on_back_right)
 	
 func attack_left():
-	print("attack left")
+#	print("attack left")
 	var mouse_position = get_local_mouse_position()
 	var vector = mouse_position - middle_of_the_body
 	var vector1 = vector.normalized() * 1
@@ -70,11 +86,17 @@ func damage_player(damage_zone: damage_zone):
 	Globals.player_health_current = Globals.player_health_current - 1
 	
 	ui.ui_update_health()
-#	print(damage_zone.global_position)
-	velocity = (position - damage_zone.global_position).normalized() * 1000 * 1# Vector2(-500, 0)
-	print(velocity)
+	player_is_knocked_back = true
+	damage_zone_position = damage_zone.global_position
+	velocity = (position - damage_zone_position).normalized() * 500 * 1
+	particles.restart()
+	particles.emitting = true
+	if Globals.player_health_current > 0:
+		sound_player_damage.pitch_scale = randf_range(0.7, 1.3)
+		sound_player_damage.play()
 
 	if Globals.player_health_current <= 0:
+		sound_player_death.play()
 		Engine.time_scale = 0.5
 		print("You died!")
 		death_timer.start()
@@ -84,11 +106,6 @@ func _on_timer_timeout():
 	Globals.player_health_current = Globals.player_health_starting
 	get_tree().reload_current_scene()
 
-func _on_weapon_collider_area_entered(area):
-	if area is enemy and is_attacking_weapon_right:
-		var enemy = area as enemy
-		enemy.damage_enemy()
-	pass # Replace with function body.
 
 func _on_animation_player_animation_finished(anim_name):
 	is_attacking_weapon_right = !is_attacking_weapon_right

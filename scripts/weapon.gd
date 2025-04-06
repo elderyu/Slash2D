@@ -1,4 +1,5 @@
 extends Node2D
+class_name weapon
 
 @onready var animation_player = $AnimationPlayer
 @onready var sound_swoosh = $AudioStreamPlayer2D
@@ -7,7 +8,6 @@ var weapon_equipped: Sprite2D = null
 
 func attack(weapon: Sprite2D):
 	visible = true
-	print("attack with weapon")
 	weapon_equipped = weapon
 	weapon_equipped.hide()
 	sound_swoosh.pitch_scale = randf_range(0.9, 1.1)
@@ -23,5 +23,5 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_area_2d_body_entered(body):
 	if body is enemy and visible:
 		var enemy = body as enemy
-		enemy.damage_enemy()
+		enemy.damage_enemy(self)
 	pass # Replace with function body.

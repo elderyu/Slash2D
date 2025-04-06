@@ -1,13 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd6iqv1ry3kro"]
+[gd_scene load_steps=3 format=3 uid="uid://bd6iqv1ry3kro"]
 
+[ext_resource type="Script" path="res://scenes/inventory_slot.gd" id="1_3x0bk"]
 [ext_resource type="Texture2D" uid="uid://d3immbkvx8u4v" path="res://assets/sprites/inventory_cell.png" id="1_7nlc5"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
 offset_right = 16.0
 offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_3x0bk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7nlc5")

@@ -13,6 +13,8 @@ var points_to_distribute = 0
 
 var level = 1
 
+var player_inventory_item_holding: inventory_item = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
