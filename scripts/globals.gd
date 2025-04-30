@@ -21,16 +21,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
-	
-func find_node_by_name(root: Node, name: String) -> Node:
-	if root.name == name:
+
+func find_node_by_name(root: Node, node_name: String) -> Node:
+	if root.name == node_name:
 		return root
 
 	for child in root.get_children():
 		if child is Node:
-			var result = find_node_by_name(child, name)
+			var result = find_node_by_name(child, node_name)
 			if result:
 				return result
 	return null

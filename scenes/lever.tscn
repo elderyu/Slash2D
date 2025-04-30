@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://8a1unh1oylby"]
+
+[ext_resource type="Texture2D" uid="uid://dk2xr506ktm73" path="res://assets/sprites/lever.png" id="1_5b6te"]
+[ext_resource type="Script" path="res://scripts/lever.gd" id="1_c2u5o"]
+[ext_resource type="AudioStream" uid="uid://dofyswfu8a3as" path="res://assets/sounds/lever_switched_1.wav" id="3_2oy4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weick"]
+size = Vector2(15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj3t1"]
+atlas = ExtResource("1_5b6te")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbfu7"]
+atlas = ExtResource("1_5b6te")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3a0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj3t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbfu7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_c2u5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_weick")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e3a0d")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2oy4c")

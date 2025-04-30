@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name player
 
-const SPEED = 50.0
+const SPEED = 120.0
 const JUMP_VELOCITY = -300.0
 
 @onready var collision = $CollisionShape2D
@@ -29,6 +29,8 @@ var falling_gravity = gravity * 1.5
 
 var stop = false
 
+var knockback = 500
+
 func _ready():
 	pass
 
@@ -41,40 +43,36 @@ func _physics_process(delta):
 		move_and_collide(velocity * delta)
 		player_is_knocked_back = false
 		return
-	
+
 	var directionx = Input.get_axis("move_left", "move_right")
 	if directionx:
 		velocity.x = directionx * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+
 	var directiony = Input.get_axis("move_up", "move_down")
 	if directiony:
 		velocity.y = directiony * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-		
+
 	if directionx < 0:
 		player_sprite.flip_h = true
 	elif directionx > 0:
 		player_sprite.flip_h = false
-		
-#	print(velocity)
+
 	move_and_slide()
-	move_and_collide(velocity * delta)
+#	move_and_collide(velocity * delta)
 
 func attack_right():
-#	print("attack right")
-	
 	var mouse_position = get_local_mouse_position()
 	var vector = mouse_position - middle_of_the_body
 	var vector1 = vector.normalized() * 1
 	weapon_right.position = vector1 + middle_of_the_body
 	weapon_right.rotation = vector.angle() + 3.14/4
 	weapon_right.attack(weapon_on_back_right)
-	
+
 func attack_left():
-#	print("attack left")
 	var mouse_position = get_local_mouse_position()
 	var vector = mouse_position - middle_of_the_body
 	var vector1 = vector.normalized() * 1
@@ -84,11 +82,11 @@ func attack_left():
 
 func damage_player(damage_zone: damage_zone):
 	Globals.player_health_current = Globals.player_health_current - 1
-	
+
 	ui.ui_health_update()
 	player_is_knocked_back = true
 	damage_zone_position = damage_zone.global_position
-	velocity = (position - damage_zone_position).normalized() * 500 * 1
+	velocity = (position - damage_zone_position).normalized() * knockback * 1
 	particles.restart()
 	particles.emitting = true
 	if Globals.player_health_current > 0:
@@ -107,7 +105,7 @@ func _on_timer_timeout():
 	get_tree().reload_current_scene()
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	is_attacking_weapon_right = !is_attacking_weapon_right
 	weapon_on_back_right.show()
 	pass # Replace with function body.

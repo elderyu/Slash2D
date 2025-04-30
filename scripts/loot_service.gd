@@ -13,14 +13,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-func generate_loot(position):
+func generate_loot(enemy_position):
 	var loot_instance = loot.instantiate()
 	add_child(loot_instance)
 	print(randi_range(0, Gems.images.size() - 1))
 	var gem_index = randi_range(0, Gems.images.size() - 1)
-	
 	loot_instance.set_image(Gems.images[gem_index])
-	loot_instance.position = position
+	loot_instance.position = enemy_position

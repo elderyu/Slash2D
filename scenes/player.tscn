@@ -91,10 +91,9 @@ libraries = {
 }
 
 [node name="weapon_right" parent="." instance=ExtResource("2_1t8rx")]
-visible = false
+position = Vector2(-9, -16)
 
 [node name="weapon_left" parent="." instance=ExtResource("2_1t8rx")]
-visible = false
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, -8)

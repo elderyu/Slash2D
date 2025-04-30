@@ -3,18 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://drmge20qopucg" path="res://assets/sprites/health_globe_outline.png" id="1_shrlt"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_x1v8o"]
 [ext_resource type="Texture2D" uid="uid://deuria2ojobt2" path="res://assets/sprites/health_globe_progress.png" id="2_qfif2"]
-[ext_resource type="Texture2D" uid="uid://drahohnctshpl" path="res://assets/sprites/experience_bar_frame.png" id="6_xcu3c"]
-[ext_resource type="Texture2D" uid="uid://c3goo6jt00wtg" path="res://assets/sprites/experience_bar.png" id="7_62rys"]
+[ext_resource type="Texture2D" uid="uid://sep42p5ng7nx" path="res://assets/sprites/experience_bar_frame.png" id="6_xcu3c"]
+[ext_resource type="Texture2D" uid="uid://bmb72oombcdxg" path="res://assets/sprites/experience_bar.png" id="7_62rys"]
 [ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="8_q66w0"]
-[ext_resource type="Texture2D" uid="uid://cwqg61r6dhdff" path="res://assets/sprites/health_bar.png" id="9_2xt0e"]
-[ext_resource type="Texture2D" uid="uid://c4lxv0o4s4btx" path="res://assets/sprites/health_bar_under.png" id="10_aq6is"]
+[ext_resource type="Texture2D" uid="uid://da1r8w6p3mede" path="res://assets/sprites/health_bar.png" id="9_2xt0e"]
+[ext_resource type="Texture2D" uid="uid://ct2pgn80603sq" path="res://assets/sprites/health_bar_under.png" id="10_aq6is"]
 [ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="10_eyi44"]
 [ext_resource type="AudioStream" uid="uid://ikowhcu7sjy7" path="res://assets/sounds/chest_close.wav" id="12_g52cq"]
 [ext_resource type="AudioStream" uid="uid://bpvrpluojwl50" path="res://assets/sounds/chest_open.wav" id="13_866sr"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="13_dlr1a"]
 [ext_resource type="Texture2D" uid="uid://bs0m4wwyp1krk" path="res://assets/sprites/inventory_background.png" id="14_gco5x"]
 [ext_resource type="PackedScene" uid="uid://bd6iqv1ry3kro" path="res://scenes/inventory_slot.tscn" id="15_63ep2"]
-[ext_resource type="Texture2D" uid="uid://bl5f2ck38h8pl" path="res://assets/sprites/button_level_skill.png" id="15_p7qnr"]
+[ext_resource type="Texture2D" uid="uid://cirieo8g1r82q" path="res://assets/sprites/button_level_skill.png" id="15_p7qnr"]
 
 [node name="ui" type="CanvasLayer"]
 script = ExtResource("1_x1v8o")
@@ -446,21 +446,21 @@ offset_bottom = 247.0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Damage2" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer"]
+[node name="level" parent="character_sheet/HBoxContainer/VBoxContainer" instance=ExtResource("10_eyi44")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_q66w0")
 text = "Level"
 
-[node name="Damage" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer"]
+[node name="points_to_distribute" parent="character_sheet/HBoxContainer/VBoxContainer" instance=ExtResource("10_eyi44")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_q66w0")
+text = "Points to distribute"
+
+[node name="damage" parent="character_sheet/HBoxContainer/VBoxContainer" instance=ExtResource("10_eyi44")]
+layout_mode = 2
 text = "Damage"
 
-[node name="Label2" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer"]
+[node name="health" parent="character_sheet/HBoxContainer/VBoxContainer" instance=ExtResource("10_eyi44")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_q66w0")
-text = "Health
-"
+text = "Health"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="character_sheet/HBoxContainer"]
 layout_mode = 2
@@ -471,6 +471,11 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "1"
+
+[node name="text_points_to_distribute" parent="character_sheet/HBoxContainer/VBoxContainer2" instance=ExtResource("10_eyi44")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
 
 [node name="text_damage" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
@@ -497,3 +502,6 @@ texture_normal = ExtResource("15_p7qnr")
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("15_p7qnr")
+
+[connection signal="button_down" from="character_sheet/HBoxContainer/VBoxContainer3/button_increase_damage" to="." method="_on_button_increase_damage_button_down"]
+[connection signal="button_down" from="character_sheet/HBoxContainer/VBoxContainer3/button_increase_health" to="." method="_on_button_increase_health_button_down"]

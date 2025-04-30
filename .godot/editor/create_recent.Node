@@ -1,13 +1,14 @@
+AnimationPlayer
 NinePatchRect
-Label
-CollisionShape2D
+AudioStreamPlayer2D
 Area2D
+CollisionShape2D
+AnimatedSprite2D
+Label
 Sprite2D
 VBoxContainer
 HBoxContainer
 GridContainer
-AudioStreamPlayer2D
-AnimatedSprite2D
 CharacterBody2D
 ProgressBar
 TextureProgressBar
@@ -19,7 +20,6 @@ Node2D
 GPUParticles2D
 TextureButton
 Control
-AnimationPlayer
 TextureRect
 ResourcePreloader
 PanelContainer

@@ -3,13 +3,15 @@ class_name inventory_slot
 
 var item_class = preload("res://scenes/inventory_item.tscn")
 var item = null
+@onready var img_slot = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if randi() % 2 == 0:
-		item = item_class.instantiate()
-		add_child(item)
-	pass # Replace with function body.
+	pass
+#	if randi() % 2 == 0:
+#		item = item_class.instantiate()
+#		add_child(item)
+#	pass # Replace with function body.
 #
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
