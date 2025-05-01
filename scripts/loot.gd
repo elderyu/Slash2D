@@ -21,7 +21,7 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 		print(Globals.find_node_by_name(get_parent(), "inventory_slots"))
 		var inventory_slots = Globals.find_node_by_name(get_parent(), "inventory_slots").get_children()
 		for i in inventory_slots:
-			if i.item == null:
+			if i.inv_item == null:
 				i.slot_item_loot(self)
 				break
 		visible = false

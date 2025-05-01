@@ -19,8 +19,6 @@ class_name ui
 
 var holding_item = null
 
-enum EQUIPMENT_TYPE {HELMET, ARMOR, GLOVES, LEGGINGS, RING_1, RING_2, AMULET, WEAPON_1, WEAPON_2}
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	text_damage.text = str(Globals.player_damage_min) + " - " + str(Globals.player_damage_max)
@@ -41,16 +39,16 @@ func _ready():
 	%slot_weapon_1.img_slot.texture = load("res://assets/sprites/inventory_cell_weapon.png")
 	%slot_weapon_2.img_slot.texture = load("res://assets/sprites/inventory_cell_weapon.png")
 
-	%slot_helmet.equipment_slot_type = EQUIPMENT_TYPE.HELMET
-	%slot_armor.equipment_slot_type = EQUIPMENT_TYPE.ARMOR
-	%slot_gloves.equipment_slot_type = EQUIPMENT_TYPE.GLOVES
-	%slot_leggings.equipment_slot_type = EQUIPMENT_TYPE.LEGGINGS
-	%slot_ring_1.equipment_slot_type = EQUIPMENT_TYPE.RING_1
-	%slot_ring_2.equipment_slot_type = EQUIPMENT_TYPE.RING_2
+	%slot_helmet.equipment_slot_type = EquipmentType.Type.HELMET
+	%slot_armor.equipment_slot_type = EquipmentType.Type.ARMOR
+	%slot_gloves.equipment_slot_type = EquipmentType.Type.GLOVES
+	%slot_leggings.equipment_slot_type = EquipmentType.Type.LEGGINGS
+	%slot_ring_1.equipment_slot_type = EquipmentType.Type.RING_1
+	%slot_ring_2.equipment_slot_type = EquipmentType.Type.RING_2
 
-	%slot_amulet.equipment_slot_type = EQUIPMENT_TYPE.AMULET
-	%slot_weapon_1.equipment_slot_type = EQUIPMENT_TYPE.WEAPON_1
-	%slot_weapon_2.equipment_slot_type = EQUIPMENT_TYPE.WEAPON_2
+	%slot_amulet.equipment_slot_type = EquipmentType.Type.AMULET
+	%slot_weapon_1.equipment_slot_type = EquipmentType.Type.WEAPON_1
+	%slot_weapon_2.equipment_slot_type = EquipmentType.Type.WEAPON_2
 
 	%button_increase_damage.visible = false
 	%button_increase_health.visible = false
@@ -69,7 +67,7 @@ func ui_character_update():
 	print("character updated")
 	var equipment_list = %equipment_left.get_children() + %equipment_right.get_children()
 	for equipment in equipment_list:
-		print(equipment.item)
+		print(equipment.inv_item)
 	ui_health_update()
 	# update stats
 
@@ -116,21 +114,21 @@ func enemy_health_update(enemy: enemy):
 func slot_gui_input(event: InputEvent, slot: inventory_slot):
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 		if holding_item != null:
-			if !slot.item:
+			if !slot.inv_item:
 				slot.slot_item_put(holding_item)
 				holding_item = null
 				if slot.equipment_slot_type != null:
 					ui_character_update()
 			else:
-				var temp_item = slot.item
+				var temp_item = slot.inv_item
 				slot.slot_item_get()
 				temp_item.global_position = event.global_position
 				slot.slot_item_put(holding_item)
 				holding_item = temp_item
 				if slot.equipment_slot_type != null:
 					ui_character_update()
-		elif slot.item:
-			holding_item = slot.item
+		elif slot.inv_item:
+			holding_item = slot.inv_item
 			slot.slot_item_get()
 			if slot.equipment_slot_type != null:
 				ui_character_update()

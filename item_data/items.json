@@ -9,13 +9,15 @@
         "item_id": 2,
         "item_name": "leather helmet",
         "item_image": "helmets/leather_helmet.png",
-        "armor": 1
+        "armor": 1,
+        "type": 1
     },
     {
         "item_id": 3,
         "item_name": "studded helmet",
         "item_image": "helmets/studded_helmet.png",
-        "armor": 2
+        "armor": 2,
+        "type": 1
     },
     {
         "item_id": 4,

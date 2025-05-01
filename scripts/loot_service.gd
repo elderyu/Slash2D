@@ -26,12 +26,6 @@ func _process(_delta):
 func generate_loot_by_enemy(enemy: enemy):
 	print("loot generate")
 	print(enemy.display_name)
-#	var loot_instance = loot.instantiate()
-#	add_child(loot_instance)
-#	print(randi_range(0, Gems.images.size() - 1))
-#	var gem_index = randi_range(0, Gems.images.size() - 1)
-#	loot_instance.set_image(Gems.images[gem_index])
-#	loot_instance.position = enemy_position
 
 func generate_loot_by_item_id(id: int, amount: int, position_spawn: Vector2):
 	var loot_instance = loot.instantiate() as loot
