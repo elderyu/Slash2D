@@ -1,0 +1,27 @@
+[
+    {
+        "item_id": 1,
+        "item_name": "gold",
+        "item_image": "helmets/leather_helmet.png",
+        "item_stack_count": 9999
+    },
+    {
+        "item_id": 2,
+        "item_name": "leather helmet",
+        "item_image": "helmets/leather_helmet.png",
+        "armor": 1
+    },
+    {
+        "item_id": 3,
+        "item_name": "studded helmet",
+        "item_image": "helmets/studded_helmet.png",
+        "armor": 2
+    },
+    {
+        "item_id": 4,
+        "item_name": "plate helmet",
+        "image": "helmets/studded_helmet.png",
+        "item_image": "helmets/leather_helmet.png",
+        "armor": 3
+    }
+]

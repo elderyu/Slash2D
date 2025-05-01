@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*res://scripts/globals.gd"
 Gems="*res://scripts/gems.gd"
+LootService="*res://scripts/loot_service.gd"
 
 [display]
 
@@ -80,6 +81,11 @@ character_sheet={
 loot_show={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194328,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+debug_print_tree_pretty={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

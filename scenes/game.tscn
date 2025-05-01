@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://chvn2e8e3fwqx" path="res://assets/sprites/chest1.png" id="7_cukhw"]
 [ext_resource type="Texture2D" uid="uid://bw5slqmmy7lox" path="res://assets/sprites/gold.png" id="11_0giwk"]
 [ext_resource type="Texture2D" uid="uid://bc1os7c64vhoo" path="res://assets/sprites/health_potion.png" id="12_eyrfb"]
-[ext_resource type="Texture2D" uid="uid://3qm2xfhul83s" path="res://assets/sprites/leather_helmet.png" id="13_vapfv"]
+[ext_resource type="Texture2D" uid="uid://3qm2xfhul83s" path="res://assets/sprites/item_icons/helmets/leather_helmet.png" id="13_hsgan"]
 [ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/sword_a_3.png" id="13_xfgw1"]
-[ext_resource type="Texture2D" uid="uid://b5cid1iet4snx" path="res://assets/sprites/studded_helmet.png" id="14_x7ggq"]
+[ext_resource type="Texture2D" uid="uid://b5cid1iet4snx" path="res://assets/sprites/item_icons/helmets/studded_helmet.png" id="14_ha76q"]
 [ext_resource type="Texture2D" uid="uid://bf6aprco0ewb6" path="res://assets/sprites/sword_a_1.png" id="14_yx3j6"]
 [ext_resource type="Texture2D" uid="uid://b8whthqvixbpf" path="res://assets/sprites/tree2.png" id="15_b62nh"]
 [ext_resource type="Texture2D" uid="uid://cgqkup713jhaq" path="res://assets/sprites/tree1.png" id="16_hxi5v"]
@@ -675,11 +675,11 @@ texture = ExtResource("14_yx3j6")
 
 [node name="LeatherHelmet" type="Sprite2D" parent="."]
 position = Vector2(-1289, -1006)
-texture = ExtResource("13_vapfv")
+texture = ExtResource("13_hsgan")
 
 [node name="StuddedHelmet" type="Sprite2D" parent="."]
 position = Vector2(-1286, -980)
-texture = ExtResource("14_x7ggq")
+texture = ExtResource("14_ha76q")
 
 [node name="Tree2" type="Sprite2D" parent="."]
 position = Vector2(-1414, -1272)

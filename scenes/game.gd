@@ -3,7 +3,6 @@ extends Node2D
 @onready var ui = %ui
 @onready var player = %player
 @onready var inventory_chest = $player/inventory_chest
-@onready var tileMap = $TileMap
 
 var enemy_class = preload("res://scenes/enemy.tscn")
 
@@ -16,14 +15,7 @@ func _ready():
 	$ui.visible = true
 	inventory_chest.visible = false
 	#	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-	
 	call_deferred("spawn_enemies")
-	pass # Replace with function body.
-	
-	var tilemap = $TileMap  # or get_node("TileMap"), adjust as needed
-
-	# Convert global position to local, then to cell coordinates
-	
 
 func spawn_enemies():
 	for i in range (number_of_enemies_to_spawn):
@@ -67,7 +59,7 @@ func spawn_enemies():
 #			print("no tile found")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):	
+func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
 		ui.inventory_toggle()
 		inventory_chest_toggle()
@@ -80,9 +72,13 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("attack_weapon_2"):
 		player.attack_left()
+		LootService.generate_loot_by_item_id(2, 3, player.global_position)
 		
 	if Input.is_action_just_pressed("loot_show"):
 		loot_show()
+		
+	if Input.is_action_just_pressed("debug_print_tree_pretty"):	
+		print_tree_pretty()
 
 func inventory_chest_toggle():
 	inventory_chest.play("close" if inventory_chest.visible else "open")
@@ -90,12 +86,12 @@ func inventory_chest_toggle():
 
 func _on_inventory_chest_animation_finished():
 	inventory_chest.visible = !(inventory_chest.animation == "close")
-	pass # Replace with function body.
 	
 func loot_show():
 	var nodes = get_children()
+	Globals.is_loot_shown = !Globals.is_loot_shown
 	for node in nodes:
 		if node is loot:
 			var loot = node as loot
-			Globals.is_loot_shown = !Globals.is_loot_shown
+			print(loot.item_name)
 			loot.label_visibility_change(Globals.is_loot_shown)

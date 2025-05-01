@@ -13,3 +13,7 @@ res://scenes/game.gd
 res://scripts/loot.gd
 res://scripts/item.gd
 res://scripts/weapon.gd
+res://scripts/loot_service.gd
+res://scenes/item.tscn
+res://scripts/player.gd
+res://scenes/label.tscn

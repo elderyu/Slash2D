@@ -85,12 +85,7 @@ func _on_timer_death_timeout():
 	if(current_blink >= blink_count):
 		timer_death.queue_free()
 		animation.visible = 0
-		var loot_instance = loot.instantiate()
-		get_parent().add_child(loot_instance)
-		print(randi_range(0, Gems.images.size() - 1))
-		var gem_index = randi_range(0, Gems.images.size() - 1)
-		loot_instance.set_image(Gems.images[gem_index])
-		loot_instance.position = position
+		LootService.generate_loot_by_item_id(2, 3, global_position)
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:

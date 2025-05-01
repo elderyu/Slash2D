@@ -2,7 +2,7 @@ extends Node2D
 class_name loot
 
 @onready var sprite: Sprite2D = $sprite
-@onready var item_name = $NinePatchRect/item_name
+@onready var item_name : Label = $NinePatchRect/item_name
 var item_class = preload("res://scenes/inventory_item.tscn")
 
 var img = null
@@ -37,6 +37,3 @@ func _on_audio_stream_player_2d_finished():
 	
 func label_visibility_change(is_visible: bool):
 	$NinePatchRect.visible = is_visible
-	
-
-

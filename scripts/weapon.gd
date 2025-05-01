@@ -1,4 +1,4 @@
-extends Node2D
+extends item
 class_name weapon
 
 @onready var animation_player = $AnimationPlayer

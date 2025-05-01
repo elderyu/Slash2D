@@ -1,3 +1,4 @@
+Node2D
 AnimationPlayer
 NinePatchRect
 AudioStreamPlayer2D
@@ -16,7 +17,6 @@ Panel
 CPUParticles2D
 MarginContainer
 TileMap
-Node2D
 GPUParticles2D
 TextureButton
 Control
