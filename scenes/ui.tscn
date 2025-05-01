@@ -481,7 +481,7 @@ text = "0"
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
-text = "1"
+text = "todo"
 
 [node name="text_health" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true

@@ -55,7 +55,7 @@ func damage_enemy(_weapon: weapon):
 	speed = speed_damaged
 	velocity = (position - player.global_position) * 30
 	enemy_is_knocked_back = true
-	life = life - Globals.player_damage
+	life = life - randi_range(Globals.player_damage_min, Globals.player_damage_max)
 	particles.restart()
 	particles.emitting = true
 	ui.enemy_health_update(self)
@@ -66,6 +66,9 @@ func damage_enemy(_weapon: weapon):
 		damage_zone.queue_free()
 		collision_body.queue_free()
 		$AnimationPlayer2.play("experience_label_show")
+		var monster_experience = 1
+		ui.ui_experience_gain(monster_experience)
+
 	else:
 		animation_player.play("damage_received")
 		slime_sound_damage.pitch_scale = randf_range(0.9, 1.1)
@@ -82,15 +85,12 @@ func _on_timer_death_timeout():
 	if(current_blink >= blink_count):
 		timer_death.queue_free()
 		animation.visible = 0
-		var monster_experience = 1
-		ui.ui_experience_gain(monster_experience)
 		var loot_instance = loot.instantiate()
 		get_parent().add_child(loot_instance)
 		print(randi_range(0, Gems.images.size() - 1))
 		var gem_index = randi_range(0, Gems.images.size() - 1)
 		loot_instance.set_image(Gems.images[gem_index])
 		loot_instance.position = position
-	pass # Replace with function body.
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:

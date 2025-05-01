@@ -80,6 +80,9 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("attack_weapon_2"):
 		player.attack_left()
+		
+	if Input.is_action_just_pressed("loot_show"):
+		loot_show()
 
 func inventory_chest_toggle():
 	inventory_chest.play("close" if inventory_chest.visible else "open")
@@ -88,3 +91,11 @@ func inventory_chest_toggle():
 func _on_inventory_chest_animation_finished():
 	inventory_chest.visible = !(inventory_chest.animation == "close")
 	pass # Replace with function body.
+	
+func loot_show():
+	var nodes = get_children()
+	for node in nodes:
+		if node is loot:
+			var loot = node as loot
+			Globals.is_loot_shown = !Globals.is_loot_shown
+			loot.label_visibility_change(Globals.is_loot_shown)

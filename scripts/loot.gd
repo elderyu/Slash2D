@@ -8,8 +8,7 @@ var item_class = preload("res://scenes/inventory_item.tscn")
 var img = null
 
 func _on_ready():
-	pass
-#	item_name.visible = false
+	$NinePatchRect.visible = Globals.is_loot_shown
 
 func set_image(image):
 	sprite.texture = load(image)
@@ -29,13 +28,15 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 
 func _on_area_2d_mouse_entered():
 	print("show popup - loot info")
-#	item_name.visible = true
 
 func _on_area_2d_mouse_exited():
 	print("hide popup - loot info")
-#	item_name.visible = false
-
 
 func _on_audio_stream_player_2d_finished():
 	queue_free()
-	pass # Replace with function body.
+	
+func label_visibility_change(is_visible: bool):
+	$NinePatchRect.visible = is_visible
+	
+
+

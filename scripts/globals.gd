@@ -6,7 +6,8 @@ var player_health_current = player_health_starting as float
 var player_experience_to_level = 5 as float
 var player_experience_current = 0
 
-var player_damage = 1
+var player_damage_min = 1
+var player_damage_max = 3
 
 var points_to_distribute_per_level = 2
 var points_to_distribute = 0
@@ -14,6 +15,8 @@ var points_to_distribute = 0
 var level = 1
 
 var player_inventory_item_holding: inventory_item = null
+
+var is_loot_shown = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -23,6 +23,7 @@ enum EQUIPMENT_TYPE {HELMET, ARMOR, GLOVES, LEGGINGS, RING_1, RING_2, AMULET, WE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	text_damage.text = str(Globals.player_damage_min) + " - " + str(Globals.player_damage_max)
 	inventory.visible = false
 	cs.visible = false
 	enemy_bar.visible = false
@@ -153,8 +154,9 @@ func handle_point_spent():
 		button_increase_health.visible = false
 
 func _on_button_increase_damage_button_down():
-	Globals.player_damage += 1
-	text_damage.text = str(Globals.player_damage)
+	Globals.player_damage_min += 1
+	Globals.player_damage_max += 1
+	text_damage.text = str(Globals.player_damage_min) + " - " + str(Globals.player_damage_max)
 	handle_point_spent()
 
 func _on_button_increase_health_button_down():
