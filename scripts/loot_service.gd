@@ -32,5 +32,6 @@ func generate_loot_by_item_id(id: int, amount: int, position_spawn: Vector2):
 	get_tree().current_scene.add_child(loot_instance)
 	var item_to_generate = items_table.filter(func(i: item): return i.item_id == id)[0]
 	loot_instance.item_name.text = item_to_generate.item_name
+	loot_instance.item_type = item_to_generate.item_type
 	loot_instance.global_position = position_spawn
 	loot_instance.set_image("res://assets/sprites/item_icons/" + item_to_generate.item_image)

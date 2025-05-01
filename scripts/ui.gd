@@ -115,11 +115,15 @@ func slot_gui_input(event: InputEvent, slot: inventory_slot):
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 		if holding_item != null:
 			if !slot.inv_item:
+				if slot.equipment_slot_type != null && slot.equipment_slot_type != holding_item.item_type:
+					return
 				slot.slot_item_put(holding_item)
 				holding_item = null
 				if slot.equipment_slot_type != null:
 					ui_character_update()
 			else:
+				if slot.equipment_slot_type != null && slot.equipment_slot_type != holding_item.item_type:
+					return
 				var temp_item = slot.inv_item
 				slot.slot_item_get()
 				temp_item.global_position = event.global_position

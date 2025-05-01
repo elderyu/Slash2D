@@ -19,3 +19,5 @@ res://scripts/player.gd
 res://scenes/label.tscn
 res://scripts/enums/equipment_type.gd
 res://scenes/inventory_slot.gd
+res://scenes/inventory_item.tscn
+res://scripts/inventory_item.gd

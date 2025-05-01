@@ -5,7 +5,7 @@ var item_id: int
 var item_name: String
 var item_stack_count: int = 1
 var item_image: String
-var item_type: int
+var item_type: EquipmentType.Type
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

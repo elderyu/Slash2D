@@ -4,7 +4,8 @@ class_name loot
 @onready var sprite: Sprite2D = $sprite
 @onready var item_name : Label = $NinePatchRect/item_name
 var item_class = preload("res://scenes/inventory_item.tscn")
-
+var item_type: EquipmentType.Type
+var item_stack_count: int
 var img = null
 
 func _on_ready():

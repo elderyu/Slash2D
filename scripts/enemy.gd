@@ -17,7 +17,7 @@ var weapon_sprite
 
 var loot = preload("res://scenes/loot.tscn")
 
-var starting_life = 3 as float
+var starting_life = 1 as float
 var life = starting_life as float
 
 var blink_count = 10
