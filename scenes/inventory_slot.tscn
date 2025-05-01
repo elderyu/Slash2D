@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd6iqv1ry3kro"]
+[gd_scene load_steps=5 format=3 uid="uid://bd6iqv1ry3kro"]
 
 [ext_resource type="Script" path="res://scenes/inventory_slot.gd" id="1_3x0bk"]
 [ext_resource type="Texture2D" uid="uid://d3immbkvx8u4v" path="res://assets/sprites/inventory_cell.png" id="1_7nlc5"]
+[ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="3_mei5f"]
+[ext_resource type="Texture2D" uid="uid://bs0m4wwyp1krk" path="res://assets/sprites/inventory_background.png" id="4_5b07a"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -14,3 +16,41 @@ script = ExtResource("1_3x0bk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7nlc5")
 centered = false
+
+[node name="item_description_background" type="NinePatchRect" parent="."]
+z_index = 10
+layout_mode = 2
+offset_left = -67.0
+offset_top = -74.0
+offset_right = 100.0
+offset_bottom = -1.0
+texture = ExtResource("4_5b07a")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="item_description" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -62.0
+offset_top = -68.0
+offset_right = 96.0
+offset_bottom = -3.0
+
+[node name="item_name" parent="item_description" instance=ExtResource("3_mei5f")]
+z_index = 10
+layout_mode = 2
+text = "Leather armor"
+
+[node name="item_armor" parent="item_description" instance=ExtResource("3_mei5f")]
+z_index = 10
+layout_mode = 2
+text = "Armor: 2"
+
+[node name="item_equip_info" parent="item_description" instance=ExtResource("3_mei5f")]
+z_index = 10
+layout_mode = 2
+text = "Right Click to Equip"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

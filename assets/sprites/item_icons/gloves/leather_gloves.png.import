@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t0wdxomvnpnt"
-path="res://.godot/imported/sword_a_2.png-b011cb96200a5c6807b1753db1d36126.ctex"
+uid="uid://b1e05vmtai2b1"
+path="res://.godot/imported/leather_gloves.png-6effc881d02e404c503733fd1ee4d170.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sword_a_2.png"
-dest_files=["res://.godot/imported/sword_a_2.png-b011cb96200a5c6807b1753db1d36126.ctex"]
+source_file="res://assets/sprites/item_icons/gloves/leather_gloves.png"
+dest_files=["res://.godot/imported/leather_gloves.png-6effc881d02e404c503733fd1ee4d170.ctex"]
 
 [params]
 

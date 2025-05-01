@@ -1,13 +1,13 @@
+CollisionShape2D
+NinePatchRect
+VBoxContainer
+Area2D
 Node2D
 AnimationPlayer
-NinePatchRect
 AudioStreamPlayer2D
-Area2D
-CollisionShape2D
 AnimatedSprite2D
 Label
 Sprite2D
-VBoxContainer
 HBoxContainer
 GridContainer
 CharacterBody2D

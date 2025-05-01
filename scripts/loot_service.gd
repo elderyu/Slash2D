@@ -35,3 +35,11 @@ func generate_loot_by_item_id(id: int, amount: int, position_spawn: Vector2):
 	loot_instance.item_type = item_to_generate.item_type
 	loot_instance.global_position = position_spawn
 	loot_instance.set_image("res://assets/sprites/item_icons/" + item_to_generate.item_image)
+
+func get_items_by_ids(ids: Array[int]):
+	var items_to_return: Array[item]
+	for i in items_table:
+		for id in ids:
+			if i.item_id == id:
+				items_to_return.append(i)
+	return items_to_return

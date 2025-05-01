@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct6ghwt4dmiol"
-path="res://.godot/imported/chain_helmet.png-f502cfb4472f0b534a3a3e866da3a7ad.ctex"
+uid="uid://t0wdxomvnpnt"
+path="res://.godot/imported/sword_a_2.png-c1dd1e1dc17960519754b14a7980cfee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/chain_helmet.png"
-dest_files=["res://.godot/imported/chain_helmet.png-f502cfb4472f0b534a3a3e866da3a7ad.ctex"]
+source_file="res://assets/sprites/item_icons/weapons/sword_a_2.png"
+dest_files=["res://.godot/imported/sword_a_2.png-c1dd1e1dc17960519754b14a7980cfee.ctex"]
 
 [params]
 

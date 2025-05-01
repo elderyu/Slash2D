@@ -9,11 +9,11 @@ var player: player
 @onready var collision_body = $collision_body
 @onready var experience_label = $experience_label
 var ui: ui
-var loot_service: loot_service
 @onready var particles = $CPUParticles2D
 @onready var slime_sound_damage = $AudioStreamPlayer2D
 @onready var slime_sound_death = $AudioStreamPlayer2D2
 var weapon_sprite
+var weapon_equipped: item
 
 var loot = preload("res://scenes/loot.tscn")
 
@@ -34,8 +34,8 @@ var display_name = "Slime"
 
 func _on_ready():
 	animation_player.play("idle")
-	if weapon_sprite != "":
-		$weapon.texture = load(weapon_sprite)
+#	if weapon_sprite != "":
+#		$weapon.texture = load(weapon_sprite)
 	pass # Replace with function body.
 
 func _physics_process(delta):
@@ -113,4 +113,10 @@ func _on_health_show_area_mouse_entered():
 
 func _on_health_show_area_mouse_exited():
 	ui.enemy_health_toggle(self)
+	pass # Replace with function body.
+
+
+func _on_area_attack_range_body_entered(body):
+	print("body in attack range" + str(body))
+	
 	pass # Replace with function body.

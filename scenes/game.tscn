@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvyq52udpx6sw"]
+[gd_scene load_steps=33 format=3 uid="uid://bvyq52udpx6sw"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_cq14r"]
 [ext_resource type="PackedScene" uid="uid://berqu5o75bccl" path="res://scenes/player.tscn" id="1_tw06h"]
@@ -9,14 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://b4oahpe8wqnoj" path="res://scenes/ui.tscn" id="6_jbb7n"]
 [ext_resource type="Texture2D" uid="uid://chvn2e8e3fwqx" path="res://assets/sprites/chest1.png" id="7_cukhw"]
 [ext_resource type="Texture2D" uid="uid://bw5slqmmy7lox" path="res://assets/sprites/gold.png" id="11_0giwk"]
+[ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/item_icons/weapons/sword_a_3.png" id="11_lj6bl"]
+[ext_resource type="Texture2D" uid="uid://bf6aprco0ewb6" path="res://assets/sprites/item_icons/weapons/sword_a_1.png" id="12_1jprj"]
 [ext_resource type="Texture2D" uid="uid://bc1os7c64vhoo" path="res://assets/sprites/health_potion.png" id="12_eyrfb"]
 [ext_resource type="Texture2D" uid="uid://3qm2xfhul83s" path="res://assets/sprites/item_icons/helmets/leather_helmet.png" id="13_hsgan"]
-[ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/sword_a_3.png" id="13_xfgw1"]
 [ext_resource type="Texture2D" uid="uid://b5cid1iet4snx" path="res://assets/sprites/item_icons/helmets/studded_helmet.png" id="14_ha76q"]
-[ext_resource type="Texture2D" uid="uid://bf6aprco0ewb6" path="res://assets/sprites/sword_a_1.png" id="14_yx3j6"]
 [ext_resource type="Texture2D" uid="uid://b8whthqvixbpf" path="res://assets/sprites/tree2.png" id="15_b62nh"]
 [ext_resource type="Texture2D" uid="uid://cgqkup713jhaq" path="res://assets/sprites/tree1.png" id="16_hxi5v"]
 [ext_resource type="PackedScene" uid="uid://8a1unh1oylby" path="res://scenes/lever.tscn" id="18_jealt"]
+[ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="18_ycl4i"]
+[ext_resource type="PackedScene" uid="uid://bw7g64dy8fdpu" path="res://scenes/spawn_area.tscn" id="19_4lwus"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwysj"]
 texture = ExtResource("4_40dx5")
@@ -606,6 +608,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klqpu"]
+size = Vector2(61, 81)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4jaq"]
 size = Vector2(24.1448, 54.557)
 
@@ -666,12 +671,12 @@ texture = ExtResource("12_eyrfb")
 
 [node name="SwordA3" type="Sprite2D" parent="."]
 position = Vector2(439, -305)
-texture = ExtResource("13_xfgw1")
+texture = ExtResource("11_lj6bl")
 
 [node name="SwordA1" type="Sprite2D" parent="."]
 position = Vector2(457, -304)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("14_yx3j6")
+texture = ExtResource("12_1jprj")
 
 [node name="LeatherHelmet" type="Sprite2D" parent="."]
 position = Vector2(-1289, -1006)
@@ -691,6 +696,20 @@ texture = ExtResource("16_hxi5v")
 
 [node name="lever" parent="." instance=ExtResource("18_jealt")]
 position = Vector2(-1166, -1022)
+
+[node name="label" parent="." instance=ExtResource("18_ycl4i")]
+offset_left = -1432.0
+offset_top = -1065.0
+offset_right = -1267.0
+offset_bottom = -1046.0
+text = "Press WSAD to move"
+
+[node name="spawn_area2" parent="." instance=ExtResource("19_4lwus")]
+position = Vector2(-979, -1041)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area2"]
+position = Vector2(11.5, 4.5)
+shape = SubResource("RectangleShape2D_klqpu")
 
 [node name="spawn_area" type="Area2D" parent="."]
 position = Vector2(-1129, -1064)

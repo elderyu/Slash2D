@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c76i7hdnxn3n2"
-path="res://.godot/imported/sword_a_3.png-25ccc23f3a65435e3d58743610ac8fc8.ctex"
+uid="uid://1fpm7p46klsg"
+path="res://.godot/imported/leather_greaves.png-0fdac6774d0da7a951dcd06b7db4320d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sword_a_3.png"
-dest_files=["res://.godot/imported/sword_a_3.png-25ccc23f3a65435e3d58743610ac8fc8.ctex"]
+source_file="res://assets/sprites/item_icons/greaves/leather_greaves.png"
+dest_files=["res://.godot/imported/leather_greaves.png-0fdac6774d0da7a951dcd06b7db4320d.ctex"]
 
 [params]
 

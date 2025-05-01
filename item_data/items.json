@@ -22,8 +22,37 @@
     {
         "item_id": 4,
         "item_name": "plate helmet",
-        "image": "helmets/studded_helmet.png",
         "item_image": "helmets/leather_helmet.png",
         "armor": 3
+    },
+    {
+        "item_id": 5,
+        "item_name": "spear",
+        "item_image": "weapons/spear1.png",
+        "item_type": 9
+    },
+    {
+        "item_id": 6,
+        "item_name": "sword",
+        "item_image": "weapons/sword_a_3.png",
+        "item_type": 9
+    },
+    {
+        "item_id": 7,
+        "item_name": "leather armor",
+        "item_image": "armor/leather_armor.png",
+        "item_type": 2
+    },
+    {
+        "item_id": 8,
+        "item_name": "leather greaves",
+        "item_image": "greaves/leather_greaves.png",
+        "item_type": 4
+    },
+    {
+        "item_id": 9,
+        "item_name": "leather gloves",
+        "item_image": "gloves/leather_gloves.png",
+        "item_type": 3
     }
 ]
