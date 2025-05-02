@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://berqu5o75bccl"]
+[gd_scene load_steps=14 format=3 uid="uid://berqu5o75bccl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oojp3"]
 [ext_resource type="PackedScene" uid="uid://djcl7t2khv1lr" path="res://scenes/weapon.tscn" id="2_1t8rx"]
-[ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/item_icons/weapons/sword_a_3.png" id="2_pc22a"]
 [ext_resource type="Texture2D" uid="uid://bjsql0ncotbsu" path="res://assets/sprites/knight.png" id="3_s3120"]
 [ext_resource type="AudioStream" uid="uid://wi6usqjdde2q" path="res://assets/sounds/player_damage.wav" id="5_xqce4"]
 [ext_resource type="AudioStream" uid="uid://c0jjr80nr33k7" path="res://assets/sounds/player_death.wav" id="6_wrcxf"]
@@ -65,7 +64,6 @@ rotation = 3.14159
 [node name="weapon_on_back_right" type="Sprite2D" parent="."]
 position = Vector2(2.00272e-05, -12)
 rotation = 3.14159
-texture = ExtResource("2_pc22a")
 flip_h = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

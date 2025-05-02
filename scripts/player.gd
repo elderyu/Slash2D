@@ -107,9 +107,9 @@ func _on_animation_player_animation_finished(_anim_name):
 	weapon_on_back_right.show()
 	pass # Replace with function body.
 
-func weapon_equip(sprite: Sprite2D):
-	visible = false
+func weapon_display_change(sprite: Sprite2D):
+	if sprite == null:
+		weapon_on_back_right.texture = null
+		return
+	weapon_on_back_right.texture = sprite.texture
 
-func hide_player():
-	self.visible = false
-	print("player visible: ", str(visible))
