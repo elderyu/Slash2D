@@ -13,3 +13,4 @@ res://scenes/spawn_area.tscn
 res://scripts/enemy.gd
 res://scripts/spawn_area.gd
 res://scripts/loot_service.gd
+res://scenes/game.gd

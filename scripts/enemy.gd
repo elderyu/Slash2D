@@ -86,7 +86,7 @@ func _on_timer_death_timeout():
 	if(current_blink >= blink_count):
 		timer_death.queue_free()
 		animation.visible = 0
-		LootService.generate_loot_by_item_id(guaranteed_item_by_id, 3, global_position)
+		LootService.generate_loot_by_item_id(guaranteed_item_by_id, global_position)
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:

@@ -19,37 +19,10 @@ func _ready():
 
 func spawn_enemies():
 	var spawn_areas = get_children().filter(func(c): return c is spawn_area)
-#	var item_to_generate = items_table.filter(func(i: item): return i.item_id == id)[0]
 	for spawn_area_item in spawn_areas:
-#		spawn_area = spawn_area[i] as spawn_area
-#		spawn_areas.
 		var a = spawn_area_item as spawn_area
 		a.spawn_enemies()
-#		var enemy_spawned = enemy_class.instantiate()
-#		enemy_spawned.player = %player
-#		enemy_spawned.ui = %ui
-#
-#		var weapon_equipped: item
-#		var weapons_possible = LootService.get_items_by_ids([5, 6])
-##		match randi()%3:
-##			1:
-##				weapon_equipped = weapons_possible[0]
-##			2:	
-##				weapon_equipped = weapons_possible[1]
-#
-#		weapon_equipped = weapons_possible[0]
-#		add_child(enemy_spawned)
-#		enemy_spawned.add_child(weapon_equipped)
-#		enemy_spawned.weapon_equipped = weapon_equipped
-#		enemy_spawned.weapon_equipped.position = enemy_spawned.position
-#		var extents = $spawn_area/spawn_area_rectangle.shape.extents
-#		var spawn_area_rectangle_global_position = $spawn_area/spawn_area_rectangle.global_position
-#		var randx = randi_range(-extents.x, extents.x)
-#		var randy = randi_range(-extents.y, extents.y)
-#		spawn_area_rectangle_global_position.x += randx
-#		spawn_area_rectangle_global_position.y += randy
-#		enemy_spawned.position = spawn_area_rectangle_global_position
-		
+
 ##		var local_pos = tilemap.to_local(Vector2(100, 100))
 #		print(tileMap.get_cell_source_id(0, enemy_spawned.global_position))
 #
@@ -82,7 +55,7 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("attack_weapon_2"):
 		player.attack_left()
-		LootService.generate_loot_by_item_id(2, 3, player.global_position)
+		LootService.generate_loot_by_item_id(6, player.global_position)
 		
 	if Input.is_action_just_pressed("loot_show"):
 		loot_show()

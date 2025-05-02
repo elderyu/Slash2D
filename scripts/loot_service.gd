@@ -27,7 +27,7 @@ func generate_loot_by_enemy(enemy: enemy):
 	print("loot generate")
 	print(enemy.display_name)
 
-func generate_loot_by_item_id(id: int, amount: int, position_spawn: Vector2):
+func generate_loot_by_item_id(id: int, position_spawn: Vector2):
 	if(id == 0):
 		return
 	var loot_instance = loot.instantiate() as loot

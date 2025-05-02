@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvyq52udpx6sw"]
+[gd_scene load_steps=33 format=3 uid="uid://bvyq52udpx6sw"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_cq14r"]
 [ext_resource type="PackedScene" uid="uid://berqu5o75bccl" path="res://scenes/player.tscn" id="1_tw06h"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://gd7kdoh2au6w" path="res://assets/sprites/tile_with_edge_2.png" id="5_76u2k"]
 [ext_resource type="PackedScene" uid="uid://b4oahpe8wqnoj" path="res://scenes/ui.tscn" id="6_jbb7n"]
 [ext_resource type="Texture2D" uid="uid://chvn2e8e3fwqx" path="res://assets/sprites/chest1.png" id="7_cukhw"]
-[ext_resource type="PackedScene" uid="uid://djcl7t2khv1lr" path="res://scenes/weapon.tscn" id="8_odekl"]
 [ext_resource type="Texture2D" uid="uid://bw5slqmmy7lox" path="res://assets/sprites/gold.png" id="11_0giwk"]
 [ext_resource type="Texture2D" uid="uid://c76i7hdnxn3n2" path="res://assets/sprites/item_icons/weapons/sword_a_3.png" id="11_lj6bl"]
 [ext_resource type="Texture2D" uid="uid://bf6aprco0ewb6" path="res://assets/sprites/item_icons/weapons/sword_a_1.png" id="12_1jprj"]
@@ -639,8 +638,6 @@ limit_smoothed = true
 position = Vector2(17, -28)
 sprite_frames = SubResource("SpriteFrames_ngqld")
 animation = &"open"
-
-[node name="weapon_test" parent="player" instance=ExtResource("8_odekl")]
 
 [node name="ui" parent="." instance=ExtResource("6_jbb7n")]
 unique_name_in_owner = true
