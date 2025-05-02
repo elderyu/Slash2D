@@ -28,6 +28,8 @@ func generate_loot_by_enemy(enemy: enemy):
 	print(enemy.display_name)
 
 func generate_loot_by_item_id(id: int, amount: int, position_spawn: Vector2):
+	if(id == 0):
+		return
 	var loot_instance = loot.instantiate() as loot
 	get_tree().current_scene.add_child(loot_instance)
 	var item_to_generate = items_table.filter(func(i: item): return i.item_id == id)[0]
