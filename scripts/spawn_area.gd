@@ -4,7 +4,8 @@ class_name spawn_area
 var enemy_class = preload("res://scenes/enemy.tscn")
 @onready var spawn_area_rectangle = $CollisionShape2D
 
-var number_of_enemies_to_spawn = 1
+@export var number_of_enemies_to_spawn: int = 1
+@export var guaranteed_item_by_id: int = 0
 
 func spawn_enemies():
 	for i in range (number_of_enemies_to_spawn):
@@ -34,3 +35,4 @@ func spawn_enemies():
 		spawn_area_rectangle_global_position.x += randx
 		spawn_area_rectangle_global_position.y += randy
 		enemy_spawned.global_position = spawn_area_rectangle_global_position
+		enemy_spawned.guaranteed_item_by_id = guaranteed_item_by_id

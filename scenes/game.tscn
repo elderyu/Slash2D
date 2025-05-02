@@ -608,11 +608,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnidq"]
+size = Vector2(75.5, 52)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klqpu"]
 size = Vector2(61, 81)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4jaq"]
-size = Vector2(24.1448, 54.557)
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_cq14r")
@@ -704,19 +704,19 @@ offset_right = -1267.0
 offset_bottom = -1046.0
 text = "Press WSAD to move"
 
+[node name="spawn_area3" parent="." instance=ExtResource("19_4lwus")]
+position = Vector2(-1958, -2082)
+guaranteed_item_by_id = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area3"]
+position = Vector2(919, 1044)
+shape = SubResource("RectangleShape2D_cnidq")
+
 [node name="spawn_area2" parent="." instance=ExtResource("19_4lwus")]
 position = Vector2(-979, -1041)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area2"]
 position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
-
-[node name="spawn_area" type="Area2D" parent="."]
-position = Vector2(-1129, -1064)
-scale = Vector2(1.13777, 1.45991)
-
-[node name="spawn_area_rectangle" type="CollisionShape2D" parent="spawn_area"]
-position = Vector2(70.5453, 13.1349)
-shape = SubResource("RectangleShape2D_y4jaq")
 
 [connection signal="animation_finished" from="player/inventory_chest" to="." method="_on_inventory_chest_animation_finished"]

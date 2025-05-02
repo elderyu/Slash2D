@@ -1,7 +1,3 @@
-res://scenes/spawn_area.tscn
-res://scripts/inventory_item.gd
-res://scenes/inventory_item.tscn
-res://scripts/spawn_area.gd
 res://scenes/loot.tscn
 res://scenes/game.tscn
 res://scenes/inventory_slot.tscn
@@ -12,6 +8,7 @@ res://scenes/weapon.tscn
 res://scenes/player.tscn
 res://scenes/item.tscn
 res://scenes/label.tscn
-res://scenes/inventory_slot.gd
+res://scenes/inventory_item.tscn
+res://scenes/spawn_area.tscn
 res://scripts/enemy.gd
-res://scenes/game.gd
+res://scripts/spawn_area.gd
