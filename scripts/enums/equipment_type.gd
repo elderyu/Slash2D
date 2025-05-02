@@ -8,5 +8,5 @@ enum Type {
 	RING_1 = 5, 
 	RING_2 = 6, 
 	AMULET = 7, 
-	WEAPON_1 = 8, 
-	WEAPON_2 = 9}
+	WEAPON = 8, 
+	SHIELD = 9}

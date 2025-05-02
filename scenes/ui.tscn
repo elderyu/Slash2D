@@ -419,7 +419,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="slot_weapon_2" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
+[node name="slot_shield" parent="inventory/HBoxContainer/equipment_right" instance=ExtResource("15_63ep2")]
 unique_name_in_owner = true
 layout_mode = 2
 

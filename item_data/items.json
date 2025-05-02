@@ -1,57 +1,57 @@
 [
     {
         "item_id": 1,
-        "item_name": "gold",
+        "item_name": "Gold",
         "item_image": "helmets/leather_helmet.png",
         "item_stack_count": 9999
     },
     {
         "item_id": 2,
-        "item_name": "leather helmet",
+        "item_name": "Leather helmet",
         "item_image": "helmets/leather_helmet.png",
-        "armor": 1,
+        "item_armor": 1,
         "item_type": 1
     },
     {
         "item_id": 3,
-        "item_name": "studded helmet",
+        "item_name": "Studded helmet",
         "item_image": "helmets/studded_helmet.png",
-        "armor": 2,
+        "item_armor": 2,
         "item_type": 1
     },
     {
         "item_id": 4,
-        "item_name": "plate helmet",
+        "item_name": "Plate helmet",
         "item_image": "helmets/leather_helmet.png",
-        "armor": 3
+        "item_armor": 3
     },
     {
         "item_id": 5,
-        "item_name": "spear",
+        "item_name": "Spear",
         "item_image": "weapons/spear1.png",
-        "item_type": 9
+        "item_type": 8
     },
     {
         "item_id": 6,
-        "item_name": "sword",
+        "item_name": "Sword",
         "item_image": "weapons/sword_a_3.png",
-        "item_type": 9
+        "item_type": 8
     },
     {
         "item_id": 7,
-        "item_name": "leather armor",
+        "item_name": "Leather armor",
         "item_image": "armor/leather_armor.png",
         "item_type": 2
     },
     {
         "item_id": 8,
-        "item_name": "leather greaves",
+        "item_name": "Leather greaves",
         "item_image": "greaves/leather_greaves.png",
         "item_type": 4
     },
     {
         "item_id": 9,
-        "item_name": "leather gloves",
+        "item_name": "Leather gloves",
         "item_image": "gloves/leather_gloves.png",
         "item_type": 3
     }

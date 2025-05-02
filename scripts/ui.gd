@@ -17,6 +17,8 @@ class_name ui
 @onready var text_health = %text_health
 @onready var text_level = %text_level
 
+@onready var slot_shield = %slot_shield
+
 var holding_item = null
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +39,7 @@ func _ready():
 	%slot_ring_2.img_slot.texture = load("res://assets/sprites/inventory_cell_ring.png")
 	%slot_amulet.img_slot.texture = load("res://assets/sprites/inventory_cell_amulet.png")
 	%slot_weapon_1.img_slot.texture = load("res://assets/sprites/inventory_cell_weapon.png")
-	%slot_weapon_2.img_slot.texture = load("res://assets/sprites/inventory_cell_weapon.png")
+	slot_shield.img_slot.texture = load("res://assets/sprites/inventory_cell_shield.png")
 
 	%slot_helmet.equipment_slot_type = EquipmentType.Type.HELMET
 	%slot_armor.equipment_slot_type = EquipmentType.Type.ARMOR
@@ -47,8 +49,8 @@ func _ready():
 	%slot_ring_2.equipment_slot_type = EquipmentType.Type.RING_2
 
 	%slot_amulet.equipment_slot_type = EquipmentType.Type.AMULET
-	%slot_weapon_1.equipment_slot_type = EquipmentType.Type.WEAPON_1
-	%slot_weapon_2.equipment_slot_type = EquipmentType.Type.WEAPON_2
+	%slot_weapon_1.equipment_slot_type = EquipmentType.Type.WEAPON
+	slot_shield.equipment_slot_type = EquipmentType.Type.SHIELD
 
 	%button_increase_damage.visible = false
 	%button_increase_health.visible = false
