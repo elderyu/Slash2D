@@ -15,10 +15,11 @@ func _ready():
 	$ui.visible = true
 	inventory_chest.visible = false
 	#	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-	call_deferred("spawn_enemies")
+	call_deferred("init")
 
-func spawn_enemies():
+func init():
 	var spawn_areas = get_children().filter(func(c): return c is spawn_area)
+	ui.init(player)
 	for spawn_area_item in spawn_areas:
 		var a = spawn_area_item as spawn_area
 		a.spawn_enemies()

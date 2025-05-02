@@ -6,7 +6,6 @@ const JUMP_VELOCITY = -300.0
 
 @onready var collision = $CollisionShape2D
 @onready var death_timer = $Timer
-@onready var ui = $"../ui"
 @onready var timer_attack = $timer_attack
 @onready var animation_player = $AnimationPlayer
 @onready var weapon_on_back_right = $weapon_on_back_right
@@ -17,6 +16,7 @@ const JUMP_VELOCITY = -300.0
 @onready var particles = $CPUParticles2D
 @onready var sound_player_damage = $sound_player_damage
 @onready var sound_player_death = $sound_player_death
+@onready var ui = %ui
 
 var middle_of_the_body = Vector2(0, -8)
 var is_attacking_weapon_right = false
@@ -28,6 +28,7 @@ var stop = false
 var knockback = 500
 
 func _ready():
+#	weapon_on_back_right.visible = false
 	pass
 
 func _physics_process(delta):
@@ -105,3 +106,10 @@ func _on_animation_player_animation_finished(_anim_name):
 	is_attacking_weapon_right = !is_attacking_weapon_right
 	weapon_on_back_right.show()
 	pass # Replace with function body.
+
+func weapon_equip(sprite: Sprite2D):
+	visible = false
+
+func hide_player():
+	self.visible = false
+	print("player visible: ", str(visible))

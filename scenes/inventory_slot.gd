@@ -6,6 +6,7 @@ var inv_item: inventory_item
 @onready var item_description = $item_description
 @onready var item_description_background = $item_description_background
 @onready var img_slot = $Sprite2D
+var player: player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +43,7 @@ func slot_item_put(new_item):
 		print("todo equip item - adjust statistics")
 	if equipment_slot_type == EquipmentType.Type.WEAPON:
 		print("show on back")
+		player.hide_player()
 
 func item_description_set(inv_item: inventory_item):
 	$item_description/item_name.text = inv_item.item_name

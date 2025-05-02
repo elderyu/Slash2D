@@ -18,6 +18,7 @@ class_name ui
 @onready var text_level = %text_level
 
 @onready var slot_shield = %slot_shield
+var player: player
 
 var holding_item = null
 
@@ -54,7 +55,7 @@ func _ready():
 
 	%button_increase_damage.visible = false
 	%button_increase_health.visible = false
-
+	
 	for i in inventory_slots.get_children():
 		i.gui_input.connect(slot_gui_input.bind(i))
 
@@ -63,8 +64,17 @@ func _ready():
 
 	for i in %equipment_right.get_children():
 		i.gui_input.connect(slot_gui_input.bind(i))
-	pass # Replace with function body.
 
+func init(p: player):
+	for i in inventory_slots.get_children():
+		i.player = p
+
+	for i in %equipment_left.get_children():
+		i.player = p
+
+	for i in %equipment_right.get_children():
+		i.player = p
+		
 func ui_character_update():
 	print("character updated")
 	var equipment_list = %equipment_left.get_children() + %equipment_right.get_children()
