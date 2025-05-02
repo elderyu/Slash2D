@@ -16,3 +16,5 @@ res://scripts/loot_service.gd
 res://scenes/game.gd
 res://scripts/enums/equipment_type.gd
 res://scripts/ui.gd
+res://scenes/inventory_slot.gd
+res://scripts/player.gd

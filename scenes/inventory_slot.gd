@@ -40,6 +40,8 @@ func slot_item_put(new_item):
 	item_description_set(inv_item)
 	if equipment_slot_type != null:
 		print("todo equip item - adjust statistics")
+	if equipment_slot_type == EquipmentType.Type.WEAPON:
+		print("show on back")
 
 func item_description_set(inv_item: inventory_item):
 	$item_description/item_name.text = inv_item.item_name

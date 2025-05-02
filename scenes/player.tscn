@@ -61,7 +61,6 @@ script = ExtResource("1_oojp3")
 [node name="weapon_on_back_left" type="Sprite2D" parent="."]
 position = Vector2(1.00002, -12)
 rotation = 3.14159
-texture = ExtResource("2_pc22a")
 
 [node name="weapon_on_back_right" type="Sprite2D" parent="."]
 position = Vector2(2.00272e-05, -12)
