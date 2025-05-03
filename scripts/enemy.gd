@@ -38,6 +38,9 @@ func _on_ready():
 #	if weapon_sprite != "":
 #		$weapon.texture = load(weapon_sprite)
 	pass # Replace with function body.
+	
+func init(data: Dictionary):
+	display_name = data.get("name")
 
 func _physics_process(delta):
 	if enemy_is_knocked_back:

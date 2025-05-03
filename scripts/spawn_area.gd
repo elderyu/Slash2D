@@ -9,6 +9,8 @@ var enemy_class = preload("res://scenes/enemy.tscn")
 
 func spawn_enemies():
 	for i in range (number_of_enemies_to_spawn):
+		var enemy_id = randi_range(1, 2) 
+		var enemy_data = EnemiesPool.enemies_table.filter(func(e: Dictionary): return e.id == enemy_id)[0]
 		var enemy_spawned = enemy_class.instantiate()
 		enemy_spawned.player = %player
 		enemy_spawned.ui = %ui
@@ -23,6 +25,7 @@ func spawn_enemies():
 				
 #		weapon_equipped = weapons_possible[0]
 		get_parent().add_child(enemy_spawned)
+		enemy_spawned.init(enemy_data)
 #		enemy_spawned.add_child(weapon_equipped)
 #		enemy_spawned.weapon_equipped = weapon_equipped
 #		enemy_spawned.weapon_equipped.position = enemy_spawned.position

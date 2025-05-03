@@ -22,6 +22,7 @@ Gems="*res://scripts/gems.gd"
 LootService="*res://scripts/loot_service.gd"
 EquipmentType="*res://scripts/enums/equipment_type.gd"
 PreloadScriptPaths="*res://scripts/preload_script_paths.gd"
+EnemiesPool="*res://scripts/enemies_pool.gd"
 
 [display]
 

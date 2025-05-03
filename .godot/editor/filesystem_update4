@@ -17,3 +17,6 @@ res://scenes/loot_service.tscn
 res://scripts/loot_service.gd
 res://scripts/player.gd
 res://scripts/damage_zone.gd
+res://enemies_pool.gd
+res://scripts/enemies_pool.gd
+res://scripts/spawn_area.gd
