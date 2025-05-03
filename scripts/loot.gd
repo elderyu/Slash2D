@@ -15,6 +15,8 @@ var damage_max: int
 var img = null
 var item_armor: int
 
+var is_equippable: bool
+
 func _on_ready():
 	$NinePatchRect.visible = Globals.is_loot_shown
 	

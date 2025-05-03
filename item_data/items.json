@@ -2,7 +2,7 @@
     {
         "item_id": 1,
         "item_name": "Gold",
-        "item_image": "helmets/leather_helmet.png",
+        "item_image": "gold.png",
         "item_stack_count": 9999
     },
     {
@@ -23,7 +23,8 @@
         "item_id": 4,
         "item_name": "Plate helmet",
         "item_image": "helmets/leather_helmet.png",
-        "item_armor": 3
+        "item_armor": 3,
+        "item_type": 1
     },
     {
         "item_id": 5,

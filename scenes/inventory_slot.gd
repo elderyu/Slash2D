@@ -9,6 +9,9 @@ var inv_item: inventory_item
 var equipment_slot_type = null
 var player: player
 var ui: ui
+@onready var item_armor = $item_description/item_armor
+@onready var item_damage = $item_description/item_damage
+@onready var item_equip_info = $item_description/item_equip_info
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,6 +56,17 @@ func slot_item_put(new_item):
 		
 func item_description_set(inv_item: inventory_item):
 	$item_description/item_name.text = inv_item.item_name
+	# todo display better
+	if inv_item.item_armor != 0:
+		item_armor.text = "Armor: " + str(inv_item.item_armor)
+	else:
+		item_armor.visible = false
+	if inv_item.item_type == EquipmentType.Type.WEAPON:
+		item_damage.text = "Damage: " + str(inv_item.damage_min) + " - " + str(inv_item.damage_max)
+	else:
+		item_damage.visible = false
+	if !inv_item.is_equippable:
+		item_equip_info.visible = false
 
 func _on_mouse_entered():
 	if inv_item == null:

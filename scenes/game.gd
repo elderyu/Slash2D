@@ -19,6 +19,8 @@ func _ready():
 	call_deferred("init")
 
 func init():
+	for i in range(LootService.items_table.size()):
+		LootService.generate_loot_by_item_id(i, player.global_position)
 	var spawn_areas = get_children().filter(func(c): return c is spawn_area)
 	ui.init(player)
 	for spawn_area_item in spawn_areas:
@@ -62,6 +64,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("attack_weapon_2"):
 #		player.attack_left()
 		LootService.generate_loot_by_item_id(5, player.global_position)
+		LootService.generate_loot_by_item_id(1, player.global_position)
 		
 	if Input.is_action_just_pressed("loot_show"):
 		loot_show()

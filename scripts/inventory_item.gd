@@ -9,6 +9,8 @@ var damage_min: int
 var damage_max: int
 var item_armor: int
 
+var is_equippable: bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -21,3 +23,4 @@ func init_from_loot(l: loot):
 	damage_min = l.damage_min
 	damage_max = l.damage_max
 	item_armor = l.item_armor
+	is_equippable = item_type in EquipmentType.Type.values()
