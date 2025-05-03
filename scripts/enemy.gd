@@ -21,8 +21,8 @@ var weapon_equipped: loot
 
 var loot = preload("res://scenes/loot.tscn")
 
-var starting_life = 10 as float
-var life = starting_life as float
+var starting_life: float
+var life: float
 
 var blink_count = 10
 var current_blink = 0
@@ -31,6 +31,7 @@ var is_aggroed = false
 
 var speed_normal = 50
 var speed_damaged = 10
+var speed_attacking = 10
 var speed = speed_normal
 var enemy_is_knocked_back = false
 
@@ -38,6 +39,7 @@ var display_name = "Slime"
 var guaranteed_item_by_id: int
 var is_enemy_damaging_by_body: bool = false
 var is_player_in_attack_zone: bool = false
+var health: int
 
 func _on_ready():
 	animation_player.play("idle")
@@ -47,6 +49,8 @@ func _on_ready():
 	
 func init(data: Dictionary):
 	display_name = data.get("name")
+	starting_life = data.get("life")
+	life = starting_life
 
 func _physics_process(delta):
 	if enemy_is_knocked_back:
@@ -132,11 +136,13 @@ func attack_start():
 	attack_damage_zone.visible = true
 	timer_attack.start()
 	attack_damage_zone.play()
+	speed = speed_attacking
 
 func _on_timer_attack_timeout():
 	print("attack")
 	attack_damage_zone.visible = false
 	attack_damage_zone.stop()
+	speed = speed_normal
 	if is_player_in_attack_zone:
 		damage_zone_attack.damage_player()
 		damage_zone_cooldown.start()

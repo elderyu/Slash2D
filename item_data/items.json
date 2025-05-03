@@ -45,18 +45,21 @@
         "item_id": 7,
         "item_name": "Leather armor",
         "item_image": "armor/leather_armor.png",
+        "item_armor": 10,
         "item_type": 2
     },
     {
         "item_id": 8,
         "item_name": "Leather greaves",
         "item_image": "greaves/leather_greaves.png",
+        "item_armor": 3,
         "item_type": 4
     },
     {
         "item_id": 9,
         "item_name": "Leather gloves",
         "item_image": "gloves/leather_gloves.png",
+        "item_armor": 5,
         "item_type": 3
     }
 ]

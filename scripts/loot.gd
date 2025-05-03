@@ -3,6 +3,7 @@ class_name loot
 
 @onready var sprite: Sprite2D = $sprite
 @onready var item_description : Label = $NinePatchRect/item_description
+@onready var item_name_popup = %item_name_popup
 var item_name: String
 var item_id: int
 var item_image: String
@@ -27,6 +28,7 @@ func init(data: Dictionary) -> void:
 	damage_max = data.get("damage_max") if data.has("damage_max") else damage_max
 	sprite.texture = load("res://assets/sprites/item_icons/" + data.item_image)
 	item_armor = data.get("item_armor") if data.has("item_armor") else item_armor
+	item_name_popup.text = item_name
 
 func set_image(image):
 	sprite.texture = load(image)

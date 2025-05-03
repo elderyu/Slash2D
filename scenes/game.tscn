@@ -713,9 +713,42 @@ position = Vector2(919, 1044)
 shape = SubResource("RectangleShape2D_cnidq")
 
 [node name="spawn_area2" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-979, -1041)
+position = Vector2(-922, -1041)
+guaranteed_item_by_id = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area2"]
+position = Vector2(11.5, 4.5)
+shape = SubResource("RectangleShape2D_klqpu")
+
+[node name="spawn_area4" parent="." instance=ExtResource("19_4lwus")]
+position = Vector2(-979, -1041)
+guaranteed_item_by_id = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area4"]
+position = Vector2(11.5, 4.5)
+shape = SubResource("RectangleShape2D_klqpu")
+
+[node name="spawn_area5" parent="." instance=ExtResource("19_4lwus")]
+position = Vector2(-1032, -1109)
+guaranteed_item_by_id = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area5"]
+position = Vector2(11.5, 4.5)
+shape = SubResource("RectangleShape2D_klqpu")
+
+[node name="spawn_area6" parent="." instance=ExtResource("19_4lwus")]
+position = Vector2(-1024, -964)
+guaranteed_item_by_id = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area6"]
+position = Vector2(11.5, 4.5)
+shape = SubResource("RectangleShape2D_klqpu")
+
+[node name="spawn_area7" parent="." instance=ExtResource("19_4lwus")]
+position = Vector2(-1058, -968)
+guaranteed_item_by_id = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area7"]
 position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
 

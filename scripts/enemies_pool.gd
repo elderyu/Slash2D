@@ -8,4 +8,3 @@ func _ready():
 	enemies = JSON.parse_string(enemies.get_as_text())
 	for enemy_from_table in enemies:
 		enemies_table.append(enemy_from_table)
-	pass
