@@ -1,8 +1,9 @@
 extends CharacterBody2D
 class_name player
 
-const SPEED = 120.0
-const JUMP_VELOCITY = -300.0
+const SPEED_DODGE = 300.0
+const SPEED_NORMAL = 80.0
+var speed = SPEED_NORMAL
 
 @onready var collision = $CollisionShape2D
 @onready var death_timer = $Timer
@@ -23,35 +24,41 @@ var is_attacking_weapon_right = false
 var player_is_knocked_back: bool = false
 var damage_zone_position = null
 
-var stop = false
-
 var knockback = 500
-
-func _ready():
-#	weapon_on_back_right.visible = false
-	pass
+var is_performing_dodge = false
+var dodge_frame_count = 15
+var dodge_frame_current_count = 15
 
 func _physics_process(delta):
+	if is_performing_dodge:
+		dodge_frame_current_count -= 1
+		if dodge_frame_current_count == 0:
+			is_performing_dodge = false
+			speed = SPEED_NORMAL
+			dodge_frame_current_count = dodge_frame_count
+			
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if player_is_knocked_back:
-		move_toward(velocity.x, 0, SPEED)
-		move_toward(velocity.y, 0, SPEED)
+		move_toward(velocity.x, 0, speed)
+		move_toward(velocity.y, 0, speed)
 		move_and_collide(velocity * delta)
 		player_is_knocked_back = false
 		return
-
+	
 	var directionx = Input.get_axis("move_left", "move_right")
 	if directionx:
-		velocity.x = directionx * SPEED
+		velocity.x = directionx * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if !is_performing_dodge:
+			velocity.x = move_toward(velocity.x, 0, speed)
 
 	var directiony = Input.get_axis("move_up", "move_down")
 	if directiony:
-		velocity.y = directiony * SPEED
+		velocity.y = directiony * speed
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		if !is_performing_dodge:
+			velocity.y = move_toward(velocity.y, 0, speed)
 
 	if directionx < 0:
 		player_sprite.flip_h = true
@@ -116,4 +123,7 @@ func weapon_right_equip(sprite: Sprite2D):
 	weapon_right = PreloadScriptPaths.PRELOAD_WEAPON.instantiate()
 	add_child(weapon_right)
 	weapon_right.item_sprite.texture = sprite.texture
-
+	
+func dodge():
+	speed = SPEED_DODGE
+	is_performing_dodge = true

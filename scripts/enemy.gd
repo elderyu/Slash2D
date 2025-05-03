@@ -31,7 +31,7 @@ var is_aggroed = false
 
 var speed_normal = 50
 var speed_damaged = 10
-var speed_attacking = 10
+var speed_attacking = 50
 var speed = speed_normal
 var enemy_is_knocked_back = false
 
@@ -39,7 +39,8 @@ var display_name = "Slime"
 var guaranteed_item_by_id: int
 var is_enemy_damaging_by_body: bool = false
 var is_player_in_attack_zone: bool = false
-var health: int
+
+var is_attacking: bool = false
 
 func _on_ready():
 	animation_player.play("idle")
@@ -59,11 +60,10 @@ func _physics_process(delta):
 		move_and_collide(velocity * delta)
 		enemy_is_knocked_back = false
 
-	if is_aggroed && life > 0:
+	if is_aggroed && life > 0 && !is_attacking:
 		var direction = (player.position - position).normalized()
 		velocity = direction * speed
 		move_and_collide(velocity * delta)
-	pass
 
 func damage_enemy(_weapon: weapon):
 	speed = speed_damaged
@@ -75,6 +75,9 @@ func damage_enemy(_weapon: weapon):
 	particles.emitting = true
 	ui.enemy_health_update(self)
 	if life <= 0:
+		attack_damage_zone.visible = false
+		timer_attack.stop()
+		ui.enemy_health_hide()
 		animation_player.play("death")
 		slime_sound_damage.pitch_scale = randf_range(0.8, 1.2)
 		slime_sound_death.play()
@@ -84,24 +87,19 @@ func damage_enemy(_weapon: weapon):
 		$AnimationPlayer2.play("experience_label_show")
 		var monster_experience = 1
 		ui.ui_experience_gain(monster_experience)
-
 	else:
 		animation_player.play("damage_received")
 		slime_sound_damage.pitch_scale = randf_range(0.9, 1.1)
 		slime_sound_damage.play()
 
-func _on_animation_death_animation_finished():
-	timer_death.start()
-	pass # Replace with function body.
-
 func _on_timer_death_timeout():
 	current_blink += 1
 	animation.visible = current_blink % 2
-
 	if(current_blink >= blink_count):
 		timer_death.queue_free()
 		animation.visible = 0
 		LootService.generate_loot_by_item_id(guaranteed_item_by_id, global_position)
+		queue_free()
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:
@@ -110,21 +108,18 @@ func _on_animation_player_animation_finished(anim_name):
 			return
 		"damage_received":
 			speed = speed_normal
-#		"experience_label_show":
-#			queue_free()
-
 	animation_player.play("idle")
-	pass # Replace with function body.
 
 func _on_collision_aggro_body_entered(body):
 	if body is player:
 		is_aggroed = true
 
 func _on_health_show_area_mouse_entered():
-	ui.enemy_health_toggle(self)
+	if life > 0:
+		ui.enemy_health_show(self)
 
 func _on_health_show_area_mouse_exited():
-	ui.enemy_health_toggle(self)
+	ui.enemy_health_hide()
 
 func _on_area_attack_range_body_entered(body):
 	print("body in attack range" + str(body))
@@ -133,6 +128,7 @@ func _on_area_attack_range_body_entered(body):
 		attack_start()
 
 func attack_start():
+	is_attacking = true
 	attack_damage_zone.visible = true
 	timer_attack.start()
 	attack_damage_zone.play()
@@ -143,12 +139,14 @@ func _on_timer_attack_timeout():
 	attack_damage_zone.visible = false
 	attack_damage_zone.stop()
 	speed = speed_normal
+	is_attacking = false
 	if is_player_in_attack_zone:
 		damage_zone_attack.damage_player()
 		damage_zone_cooldown.start()
 
 func _on_area_attack_range_body_exited(body):
-	is_player_in_attack_zone = false
+	if body is player:
+		is_player_in_attack_zone = false
 
 func _on_damage_zone_cooldown_timeout():
 	if is_player_in_attack_zone:

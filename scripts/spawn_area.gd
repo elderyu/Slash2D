@@ -15,20 +15,8 @@ func spawn_enemies():
 		enemy_spawned.player = %player
 		enemy_spawned.ui = %ui
 		
-		var weapon_equipped: loot
-		var weapons_possible = LootService.get_items_by_ids([5, 6])
-#		match randi()%3:
-#			1:
-#				weapon_equipped = weapons_possible[0]
-#			2:	
-#				weapon_equipped = weapons_possible[1]
-				
-#		weapon_equipped = weapons_possible[0]
 		get_parent().add_child(enemy_spawned)
 		enemy_spawned.init(enemy_data)
-#		enemy_spawned.add_child(weapon_equipped)
-#		enemy_spawned.weapon_equipped = weapon_equipped
-#		enemy_spawned.weapon_equipped.position = enemy_spawned.position
 		var extents = spawn_area_rectangle.shape.extents
 		var spawn_area_rectangle_global_position = spawn_area_rectangle.global_position
 		var randx = randi_range(-extents.x, extents.x)

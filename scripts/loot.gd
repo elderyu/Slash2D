@@ -2,7 +2,6 @@ extends Node2D
 class_name loot
 
 @onready var sprite: Sprite2D = $sprite
-@onready var item_description : Label = $NinePatchRect/item_description
 @onready var item_name_popup = %item_name_popup
 var item_name: String
 var item_id: int
@@ -32,10 +31,6 @@ func init(data: Dictionary) -> void:
 	item_armor = data.get("item_armor") if data.has("item_armor") else item_armor
 	item_name_popup.text = item_name
 
-func set_image(image):
-	sprite.texture = load(image)
-	img = image
-
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		$AudioStreamPlayer2D.play()
@@ -57,5 +52,5 @@ func _on_area_2d_mouse_exited():
 func _on_audio_stream_player_2d_finished():
 	queue_free()
 	
-func label_visibility_change(is_visible: bool):
-	$NinePatchRect.visible = is_visible
+func label_visibility_change(is_label_visible: bool):
+	$NinePatchRect.visible = is_label_visible

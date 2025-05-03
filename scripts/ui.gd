@@ -121,11 +121,16 @@ func inventory_toggle():
 func character_sheet_toggle():
 	cs.visible = !cs.visible
 
-func enemy_health_toggle(enemy: enemy):
-	enemy_bar_health.visible = !enemy_bar_health.visible
-	enemy_bar.visible = !enemy_bar.visible
-	$enemy_name.visible = !$enemy_name.visible
+func enemy_health_show(enemy: enemy):
+	enemy_bar_health.visible = true
+	enemy_bar.visible = true
+	$enemy_name.visible = true
 	enemy_health_update(enemy)
+	
+func enemy_health_hide():
+	enemy_bar_health.visible = false
+	enemy_bar.visible = false
+	$enemy_name.visible = false
 
 func enemy_health_update(enemy: enemy):
 	enemy_bar_health.text = str(enemy.life) + "/" + str(enemy.starting_life)
@@ -136,13 +141,17 @@ func slot_gui_input(event: InputEvent, slot: inventory_slot):
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
 		if holding_item != null:
 			if !slot.inv_item:
+				# put item into slot
 				if slot.equipment_slot_type != null && slot.equipment_slot_type != holding_item.item_type:
 					return
 				slot.slot_item_put(holding_item)
 				holding_item = null
 				if slot.equipment_slot_type != null:
 					ui_character_update()
+				slot.item_description.visible = true
+				slot.item_description_background.visible = true
 			else:
+				# swap item between slots
 				if slot.equipment_slot_type != null && slot.equipment_slot_type != holding_item.item_type:
 					return
 				var temp_item = slot.inv_item
@@ -153,6 +162,7 @@ func slot_gui_input(event: InputEvent, slot: inventory_slot):
 				if slot.equipment_slot_type != null:
 					ui_character_update()
 		elif slot.inv_item:
+			# get item from slot
 			holding_item = slot.inv_item
 			slot.slot_item_get()
 			if slot.equipment_slot_type != null:

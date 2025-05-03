@@ -705,7 +705,7 @@ offset_bottom = -1046.0
 text = "Press WSAD to move"
 
 [node name="spawn_area3" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-1101, -1208)
+position = Vector2(-1096, -1182)
 guaranteed_item_by_id = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area3"]
@@ -713,7 +713,7 @@ position = Vector2(919, 1044)
 shape = SubResource("RectangleShape2D_cnidq")
 
 [node name="spawn_area2" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-65, -167)
+position = Vector2(-60, -141)
 guaranteed_item_by_id = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area2"]
@@ -721,7 +721,7 @@ position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
 
 [node name="spawn_area4" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-122, -167)
+position = Vector2(-117, -141)
 guaranteed_item_by_id = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area4"]
@@ -729,7 +729,7 @@ position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
 
 [node name="spawn_area5" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-175, -235)
+position = Vector2(-170, -209)
 guaranteed_item_by_id = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area5"]
@@ -737,7 +737,7 @@ position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
 
 [node name="spawn_area6" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-167, -90)
+position = Vector2(-162, -64)
 guaranteed_item_by_id = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area6"]
@@ -745,7 +745,7 @@ position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
 
 [node name="spawn_area7" parent="." instance=ExtResource("19_4lwus")]
-position = Vector2(-201, -94)
+position = Vector2(-196, -68)
 guaranteed_item_by_id = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_area7"]

@@ -10,10 +10,6 @@ var damage_max: int
 var item_armor: int
 
 var is_equippable: bool
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 	
 func init_from_loot(l: loot):
 	item_name = l.item_name

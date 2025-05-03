@@ -69,9 +69,13 @@ func _process(_delta):
 	if Input.is_action_just_pressed("loot_show"):
 		loot_show()
 		
-	if Input.is_action_just_pressed("debug_print_tree_pretty"):	
+	if Input.is_action_just_pressed("debug_print_tree_pretty"):
 		print_tree_pretty()
 		LootService.generate_loot_by_item_id(6, player.global_position)
+		
+	if Input.is_action_just_pressed("dodge"):
+		player.dodge()
+		print("dodge")
 
 func inventory_chest_toggle():
 	inventory_chest.play("close" if inventory_chest.visible else "open")
