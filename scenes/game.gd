@@ -26,6 +26,10 @@ func init():
 	for spawn_area_item in spawn_areas:
 		var a = spawn_area_item as spawn_area
 		a.spawn_enemies()
+	$enemy.player = player
+	$enemy.ui = ui
+	var enemy_data = EnemiesPool.enemies_table.filter(func(e: Dictionary): return e.id == 1)[0]
+	$enemy.init(enemy_data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
