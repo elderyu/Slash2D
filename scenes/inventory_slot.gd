@@ -56,7 +56,7 @@ func slot_item_put(new_item):
 		
 func item_description_set(inv_item: inventory_item):
 	$item_description/item_name.text = inv_item.item_name
-	# todo display better
+	# todo display better?
 	if inv_item.item_armor != 0:
 		item_armor.text = "Armor: " + str(inv_item.item_armor)
 	else:
@@ -73,10 +73,8 @@ func _on_mouse_entered():
 		return
 	item_description.visible = true
 	item_description_background.visible = true
-	pass # Replace with function body.
 
 
 func _on_mouse_exited():
 	item_description.visible = false
 	item_description_background.visible = false
-	pass # Replace with function body.
