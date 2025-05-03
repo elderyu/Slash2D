@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://f37me01apcdj"]
+
+[sub_resource type="GDScript" id="GDScript_rgg7v"]
+script/source = "extends enemy
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4gv4"]
+
+[node name="slime_blue" type="CharacterBody2D"]
+script = SubResource("GDScript_rgg7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l4gv4")

@@ -25,8 +25,6 @@ func slot_item_get():
 	var inventory_node = find_parent("ui")
 	inventory_node.add_child(inv_item)
 	inv_item = null
-	if equipment_slot_type != null:
-		print("todo unequip item - adjust statistics")
 	if equipment_slot_type == EquipmentType.Type.WEAPON:
 		player.weapon_right_unequip()
 		Globals.player_damage_min = 0
@@ -53,7 +51,6 @@ func slot_item_put(new_item):
 		Globals.player_damage_min = inv_item.damage_min
 		Globals.player_damage_max = inv_item.damage_max
 	if equipment_slot_type != null:
-		print("todo equip item - adjust statistics")
 		ui.ui_character_update()
 	
 func item_description_set():

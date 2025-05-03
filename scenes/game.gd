@@ -27,24 +27,6 @@ func init():
 		var a = spawn_area_item as spawn_area
 		a.spawn_enemies()
 
-##		var local_pos = tilemap.to_local(Vector2(100, 100))
-#		print(tileMap.get_cell_source_id(0, enemy_spawned.global_position))
-#
-#		var cell_coords = tileMap.local_to_map(enemy_spawned.position)
-#
-#		# Get tile data
-#		var tile_data = tileMap.get_cell_tile_data(0, cell_coords)  # 0 = layer index
-#		print()
-#		if tile_data:
-#			print(tile_data)
-##			return {
-##				"tile_coords": cell_coords,
-##				"tile_id": tile_data.get_tile_id(),
-##				"source_id": tile_data.get_source_id()
-##			}
-#		else:
-#			print("no tile found")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
@@ -75,7 +57,6 @@ func _process(_delta):
 		
 	if Input.is_action_just_pressed("dodge"):
 		player.dodge()
-		print("dodge")
 
 func inventory_chest_toggle():
 	inventory_chest.play("close" if inventory_chest.visible else "open")
@@ -90,5 +71,4 @@ func loot_show():
 	for node in nodes:
 		if node is loot:
 			var loot = node as loot
-			print(loot.item_name)
 			loot.label_visibility_change(Globals.is_loot_shown)

@@ -29,7 +29,6 @@ func _on_area_2d_body_entered(body):
 		enemy.damage_enemy(self)
 
 func _on_area_2d_area_entered(area):
-	print(area)
 	if area is lever:
 		var lever = area as lever
 		lever.switch()

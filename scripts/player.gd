@@ -102,7 +102,6 @@ func damage_player(damage_zone: damage_zone):
 	if Globals.player_health_current <= 0:
 		sound_player_death.play()
 		Engine.time_scale = 0.5
-		print("You died!")
 		death_timer.start()
 
 func _on_timer_timeout():

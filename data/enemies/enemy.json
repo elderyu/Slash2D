@@ -2,11 +2,11 @@
     {
         "id": 1,
         "name": "Green slime",
-        "life": 1
+        "life": 10
     },
     {
         "id": 2,
         "name": "Blue slime",
-        "life": 2
+        "life": 20
     }
 ]

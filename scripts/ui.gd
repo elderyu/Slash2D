@@ -79,13 +79,11 @@ func init(p: player):
 		i.ui = self
 		
 func ui_character_update():
-	print("character updated")
 	var equipment_list = %equipment_left.get_children() + %equipment_right.get_children()
 	Globals.player_armor = 0
 	for equipment in equipment_list:
 		if equipment.inv_item == null:
 			continue
-		print(equipment.inv_item)
 		Globals.player_armor += equipment.inv_item.item_armor		
 	ui_health_update()
 	text_damage.text = str(Globals.player_damage_min) + " - " + str(Globals.player_damage_max)
@@ -116,7 +114,6 @@ func inventory_toggle():
 	else:
 		%chest_open.play()
 	inventory.visible = !inventory.visible
-	print("toggle")
 
 func character_sheet_toggle():
 	cs.visible = !cs.visible

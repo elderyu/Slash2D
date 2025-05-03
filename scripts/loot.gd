@@ -34,8 +34,6 @@ func init(data: Dictionary) -> void:
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		$AudioStreamPlayer2D.play()
-		print("loot")
-		print(Globals.find_node_by_name(get_parent(), "inventory_slots"))
 		var inventory_slots = Globals.find_node_by_name(get_parent(), "inventory_slots").get_children()
 		for i in inventory_slots:
 			if i.inv_item == null:

@@ -69,7 +69,6 @@ func damage_enemy(_weapon: weapon):
 	speed = speed_damaged
 	velocity = (position - player.global_position) * 30
 	enemy_is_knocked_back = true
-	print(randi_range(Globals.player_damage_min, Globals.player_damage_max))
 	life = life - randi_range(Globals.player_damage_min, Globals.player_damage_max)
 	particles.restart()
 	particles.emitting = true
@@ -122,7 +121,6 @@ func _on_health_show_area_mouse_exited():
 	ui.enemy_health_hide()
 
 func _on_area_attack_range_body_entered(body):
-	print("body in attack range" + str(body))
 	if body is player:
 		is_player_in_attack_zone = true
 		attack_start()
@@ -135,7 +133,6 @@ func attack_start():
 	speed = speed_attacking
 
 func _on_timer_attack_timeout():
-	print("attack")
 	attack_damage_zone.visible = false
 	attack_damage_zone.stop()
 	speed = speed_normal
