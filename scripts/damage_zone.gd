@@ -1,31 +1,15 @@
 extends Area2D
 class_name damage_zone
 
-@onready var timer_damage_cooldown = $timer_damage_cooldown
-
-var is_attack_ready = true
-var is_player_in_hitbox = false
-var p = ""
+var p: player
 
 func _on_body_entered(body):
-	if body is player && is_attack_ready:
+	if body is player:
 		p = body as player
-		damage_player()
 
 func damage_player():
-	if is_attack_ready:
+	if p != null:
 		p.damage_player(self)
-		is_attack_ready = false
-		is_player_in_hitbox = true
-		timer_damage_cooldown.start()
-
-func _on_timer_damage_cooldown_timeout():
-	is_attack_ready = true
-	if is_player_in_hitbox:
-		damage_player()
-	pass # Replace with function body.
 
 func _on_body_exited(_body):
-	is_player_in_hitbox = false
-	is_attack_ready = true
-	pass # Replace with function body.
+	p = null

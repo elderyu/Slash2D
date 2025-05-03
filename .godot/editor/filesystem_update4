@@ -25,3 +25,4 @@ res://scripts/ui.gd
 res://scripts/globals.gd
 res://scripts/loot.gd
 res://scripts/inventory_item.gd
+res://scenes/damage_zone.tscn

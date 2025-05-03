@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://h2to774mikv1"]
+[gd_scene load_steps=41 format=3 uid="uid://h2to774mikv1"]
 
 [ext_resource type="Texture2D" uid="uid://bc0prc5dm7yfl" path="res://assets/sprites/slime_green.png" id="1_1p1ra"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5v08u"]
@@ -6,6 +6,29 @@
 [ext_resource type="FontFile" uid="uid://1t0o57nwnw7a" path="res://assets/fonts/PixelOperator8.ttf" id="4_x7gu7"]
 [ext_resource type="AudioStream" uid="uid://dja5r6igladg1" path="res://assets/sounds/slime_damage.wav" id="5_ofii5"]
 [ext_resource type="AudioStream" uid="uid://do4el1rspnwjq" path="res://assets/sounds/slime_death.wav" id="6_mdrbn"]
+[ext_resource type="Texture2D" uid="uid://coma5bid3mjf3" path="res://assets/sprites/damage_area_circle_2.png" id="8_4bp1d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4gm0"]
+atlas = ExtResource("8_4bp1d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5vbt"]
+atlas = ExtResource("8_4bp1d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hnugy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4gm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5vbt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_waykd"]
 atlas = ExtResource("1_1p1ra")
@@ -116,8 +139,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ff4le"]
-size = Vector2(14, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i23eq"]
+radius = 16.0
 
 [sub_resource type="Animation" id="Animation_i6r16"]
 length = 0.001
@@ -331,10 +354,19 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_mfhms"]
 radius = 20.025
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjjfo"]
+radius = 16.0
+
 [node name="enemy" type="CharacterBody2D"]
 input_pickable = true
 slide_on_ceiling = false
 script = ExtResource("1_5v08u")
+
+[node name="attack_damage_zone" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_hnugy")
+frame = 1
+frame_progress = 0.156113
 
 [node name="weapon" type="Sprite2D" parent="."]
 position = Vector2(1, -10)
@@ -350,7 +382,7 @@ position = Vector2(0, 7)
 
 [node name="collision_body2" type="CollisionShape2D" parent="damage_zone"]
 position = Vector2(0, -14)
-shape = SubResource("RectangleShape2D_ff4le")
+shape = SubResource("CircleShape2D_i23eq")
 
 [node name="timer_death" type="Timer" parent="."]
 wait_time = 0.1
@@ -420,6 +452,18 @@ libraries = {
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_mfhms")
 
+[node name="timer_attack" type="Timer" parent="."]
+one_shot = true
+
+[node name="damage_zone_attack" parent="." instance=ExtResource("3_lq6ky")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone_attack"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_bjjfo")
+
+[node name="damage_zone_cooldown" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="timeout" from="timer_death" to="." method="_on_timer_death_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
@@ -428,3 +472,6 @@ shape = SubResource("CircleShape2D_mfhms")
 [connection signal="mouse_entered" from="health_show_area" to="." method="_on_health_show_area_mouse_entered"]
 [connection signal="mouse_exited" from="health_show_area" to="." method="_on_health_show_area_mouse_exited"]
 [connection signal="body_entered" from="area_attack_range" to="." method="_on_area_attack_range_body_entered"]
+[connection signal="body_exited" from="area_attack_range" to="." method="_on_area_attack_range_body_exited"]
+[connection signal="timeout" from="timer_attack" to="." method="_on_timer_attack_timeout"]
+[connection signal="timeout" from="damage_zone_cooldown" to="." method="_on_damage_zone_cooldown_timeout"]

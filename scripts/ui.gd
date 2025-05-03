@@ -20,7 +20,6 @@ class_name ui
 
 @onready var slot_shield = %slot_shield
 var player: player
-
 var holding_item = null
 
 # Called when the node enters the scene tree for the first time.

@@ -5,9 +5,5 @@
 [node name="damage_zone" type="Area2D"]
 script = ExtResource("1_lgrlv")
 
-[node name="timer_damage_cooldown" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="timeout" from="timer_damage_cooldown" to="." method="_on_timer_damage_cooldown_timeout"]
+[connection signal="ready" from="." to="." method="_on_ready"]

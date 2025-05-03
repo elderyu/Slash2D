@@ -14,6 +14,10 @@ var ui: ui
 @onready var slime_sound_death = $AudioStreamPlayer2D2
 var weapon_sprite: Sprite2D
 var weapon_equipped: loot
+@onready var attack_damage_zone = $attack_damage_zone
+@onready var timer_attack = $timer_attack
+@onready var damage_zone_attack: damage_zone = $damage_zone_attack
+@onready var damage_zone_cooldown: Timer = $damage_zone_cooldown
 
 var loot = preload("res://scenes/loot.tscn")
 
@@ -32,12 +36,14 @@ var enemy_is_knocked_back = false
 
 var display_name = "Slime"
 var guaranteed_item_by_id: int
+var is_enemy_damaging_by_body: bool = false
+var is_player_in_attack_zone: bool = false
 
 func _on_ready():
 	animation_player.play("idle")
-#	if weapon_sprite != "":
-#		$weapon.texture = load(weapon_sprite)
-	pass # Replace with function body.
+	if !is_enemy_damaging_by_body:
+		damage_zone.queue_free()
+	attack_damage_zone.visible = false
 	
 func init(data: Dictionary):
 	display_name = data.get("name")
@@ -68,7 +74,8 @@ func damage_enemy(_weapon: weapon):
 		animation_player.play("death")
 		slime_sound_damage.pitch_scale = randf_range(0.8, 1.2)
 		slime_sound_death.play()
-		damage_zone.queue_free()
+		if damage_zone != null:
+			damage_zone.queue_free()
 		collision_body.queue_free()
 		$AnimationPlayer2.play("experience_label_show")
 		var monster_experience = 1
@@ -108,16 +115,35 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_collision_aggro_body_entered(body):
 	if body is player:
 		is_aggroed = true
-	pass # Replace with function body.
-
 
 func _on_health_show_area_mouse_entered():
 	ui.enemy_health_toggle(self)
-	pass # Replace with function body.
-
 
 func _on_health_show_area_mouse_exited():
 	ui.enemy_health_toggle(self)
 
 func _on_area_attack_range_body_entered(body):
 	print("body in attack range" + str(body))
+	if body is player:
+		is_player_in_attack_zone = true
+		attack_start()
+
+func attack_start():
+	attack_damage_zone.visible = true
+	timer_attack.start()
+	attack_damage_zone.play()
+
+func _on_timer_attack_timeout():
+	print("attack")
+	attack_damage_zone.visible = false
+	attack_damage_zone.stop()
+	if is_player_in_attack_zone:
+		damage_zone_attack.damage_player()
+		damage_zone_cooldown.start()
+
+func _on_area_attack_range_body_exited(body):
+	is_player_in_attack_zone = false
+
+func _on_damage_zone_cooldown_timeout():
+	if is_player_in_attack_zone:
+		attack_start()
