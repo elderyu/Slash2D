@@ -6,15 +6,14 @@ var inv_item: inventory_item
 @onready var item_description = $item_description
 @onready var item_description_background = $item_description_background
 @onready var img_slot = $Sprite2D
+var equipment_slot_type = null
 var player: player
+var ui: ui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	item_description.visible = inv_item != null
 	item_description_background.visible = inv_item != null
-	pass
-
-var equipment_slot_type = null
 
 func slot_item_get():
 	remove_child(inv_item)
@@ -23,7 +22,11 @@ func slot_item_get():
 	inv_item = null
 	if equipment_slot_type != null:
 		print("todo unequip item - adjust statistics")
-		player.weapon_display_change(null)
+	if equipment_slot_type == EquipmentType.Type.WEAPON:
+		player.weapon_right_unequip()
+		Globals.player_damage_min = 0
+		Globals.player_damage_max = 0
+		ui.ui_character_update()
 	
 func slot_item_loot(loot_item: loot):
 	var new_item = item_class.instantiate()
@@ -43,8 +46,10 @@ func slot_item_put(new_item):
 	if equipment_slot_type != null:
 		print("todo equip item - adjust statistics")
 	if equipment_slot_type == EquipmentType.Type.WEAPON:
-		print("show on back")
-		player.weapon_display_change(inv_item.item_sprite)
+		player.weapon_right_equip(inv_item.item_sprite)
+		Globals.player_damage_min = inv_item.damage_min
+		Globals.player_damage_max = inv_item.damage_max
+		ui.ui_character_update()
 
 func item_description_set(inv_item: inventory_item):
 	$item_description/item_name.text = inv_item.item_name

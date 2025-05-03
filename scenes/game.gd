@@ -9,6 +9,7 @@ var enemy_class = preload("res://scenes/enemy.tscn")
 var are_enemies_spawned = false
 
 var number_of_enemies_to_spawn = 1
+var is_ui_opened = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,24 +46,29 @@ func init():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("inventory"):
+#		is_ui_opened = !is_ui_opened
 		ui.inventory_toggle()
 		inventory_chest_toggle()
 
 	if Input.is_action_just_pressed("character_sheet"):
+#		is_ui_opened = !is_ui_opened
 		ui.character_sheet_toggle()
 
 	if Input.is_action_just_pressed("attack_weapon_1"):
+#		if is_ui_opened:
+#			return
 		player.attack_right()
 
 	if Input.is_action_just_pressed("attack_weapon_2"):
-		player.attack_left()
-		LootService.generate_loot_by_item_id(6, player.global_position)
+#		player.attack_left()
+		LootService.generate_loot_by_item_id(5, player.global_position)
 		
 	if Input.is_action_just_pressed("loot_show"):
 		loot_show()
 		
 	if Input.is_action_just_pressed("debug_print_tree_pretty"):	
 		print_tree_pretty()
+		LootService.generate_loot_by_item_id(6, player.global_position)
 
 func inventory_chest_toggle():
 	inventory_chest.play("close" if inventory_chest.visible else "open")

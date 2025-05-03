@@ -6,8 +6,8 @@ var player_health_current = player_health_starting as float
 var player_experience_to_level = 5 as float
 var player_experience_current = 0
 
-var player_damage_min = 1
-var player_damage_max = 3
+var player_damage_min = 0
+var player_damage_max = 0
 
 var points_to_distribute_per_level = 2
 var points_to_distribute = 0

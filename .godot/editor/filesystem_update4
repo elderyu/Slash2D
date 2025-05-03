@@ -10,11 +10,10 @@ res://scenes/item.tscn
 res://scenes/label.tscn
 res://scenes/inventory_item.tscn
 res://scenes/spawn_area.tscn
-res://scripts/enemy.gd
-res://scripts/spawn_area.gd
-res://scripts/loot_service.gd
 res://scenes/game.gd
-res://scripts/enums/equipment_type.gd
-res://scripts/ui.gd
-res://scenes/inventory_slot.gd
+res://default_bus_layout.tres
+res://scripts/enemy.gd
+res://scenes/loot_service.tscn
+res://scripts/loot_service.gd
 res://scripts/player.gd
+res://scripts/damage_zone.gd

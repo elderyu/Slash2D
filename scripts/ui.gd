@@ -68,12 +68,15 @@ func _ready():
 func init(p: player):
 	for i in inventory_slots.get_children():
 		i.player = p
+		i.ui = self
 
 	for i in %equipment_left.get_children():
 		i.player = p
+		i.ui = self
 
 	for i in %equipment_right.get_children():
 		i.player = p
+		i.ui = self
 		
 func ui_character_update():
 	print("character updated")
@@ -81,6 +84,7 @@ func ui_character_update():
 	for equipment in equipment_list:
 		print(equipment.inv_item)
 	ui_health_update()
+	text_damage.text = str(Globals.player_damage_min) + " - " + str(Globals.player_damage_max)
 	# update stats
 
 func ui_health_update():

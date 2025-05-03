@@ -29,12 +29,16 @@
         "item_id": 5,
         "item_name": "Spear",
         "item_image": "weapons/spear1.png",
+        "damage_min": 1,
+        "damage_max": 4,
         "item_type": 8
     },
     {
         "item_id": 6,
         "item_name": "Sword",
         "item_image": "weapons/sword_a_3.png",
+        "damage_min": 2,
+        "damage_max": 3,
         "item_type": 8
     },
     {

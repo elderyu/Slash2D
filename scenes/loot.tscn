@@ -37,7 +37,7 @@ patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
 
-[node name="item_name" parent="NinePatchRect" instance=ExtResource("4_tonsl")]
+[node name="item_description" parent="NinePatchRect" instance=ExtResource("4_tonsl")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

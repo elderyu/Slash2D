@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://berqu5o75bccl"]
+[gd_scene load_steps=13 format=3 uid="uid://berqu5o75bccl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_oojp3"]
-[ext_resource type="PackedScene" uid="uid://djcl7t2khv1lr" path="res://scenes/weapon.tscn" id="2_1t8rx"]
 [ext_resource type="Texture2D" uid="uid://bjsql0ncotbsu" path="res://assets/sprites/knight.png" id="3_s3120"]
 [ext_resource type="AudioStream" uid="uid://wi6usqjdde2q" path="res://assets/sounds/player_damage.wav" id="5_xqce4"]
 [ext_resource type="AudioStream" uid="uid://c0jjr80nr33k7" path="res://assets/sounds/player_death.wav" id="6_wrcxf"]
@@ -86,11 +85,6 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_y40bx")
 }
-
-[node name="weapon_right" parent="." instance=ExtResource("2_1t8rx")]
-position = Vector2(-9, -16)
-
-[node name="weapon_left" parent="." instance=ExtResource("2_1t8rx")]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, -8)

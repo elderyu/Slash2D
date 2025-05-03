@@ -12,12 +12,12 @@ var ui: ui
 @onready var particles = $CPUParticles2D
 @onready var slime_sound_damage = $AudioStreamPlayer2D
 @onready var slime_sound_death = $AudioStreamPlayer2D2
-var weapon_sprite
-var weapon_equipped: item
+var weapon_sprite: Sprite2D
+var weapon_equipped: loot
 
 var loot = preload("res://scenes/loot.tscn")
 
-var starting_life = 1 as float
+var starting_life = 10 as float
 var life = starting_life as float
 
 var blink_count = 10
@@ -56,6 +56,7 @@ func damage_enemy(_weapon: weapon):
 	speed = speed_damaged
 	velocity = (position - player.global_position) * 30
 	enemy_is_knocked_back = true
+	print(randi_range(Globals.player_damage_min, Globals.player_damage_max))
 	life = life - randi_range(Globals.player_damage_min, Globals.player_damage_max)
 	particles.restart()
 	particles.emitting = true
@@ -114,10 +115,6 @@ func _on_health_show_area_mouse_entered():
 
 func _on_health_show_area_mouse_exited():
 	ui.enemy_health_toggle(self)
-	pass # Replace with function body.
-
 
 func _on_area_attack_range_body_entered(body):
 	print("body in attack range" + str(body))
-	
-	pass # Replace with function body.

@@ -11,8 +11,8 @@ const JUMP_VELOCITY = -300.0
 @onready var weapon_on_back_right = $weapon_on_back_right
 @onready var weapon_on_back_left = $weapon_on_back_left
 @onready var player_sprite = $AnimatedSprite2D
-@onready var weapon_right = $weapon_right
-@onready var weapon_left = $weapon_left
+var weapon_right: weapon
+var weapon_left: weapon
 @onready var particles = $CPUParticles2D
 @onready var sound_player_damage = $sound_player_damage
 @onready var sound_player_death = $sound_player_death
@@ -62,6 +62,8 @@ func _physics_process(delta):
 #	move_and_collide(velocity * delta)
 
 func attack_right():
+	if weapon_right == null:
+		return
 	var mouse_position = get_local_mouse_position()
 	var vector = mouse_position - middle_of_the_body
 	var vector1 = vector.normalized() * 1
@@ -101,15 +103,17 @@ func _on_timer_timeout():
 	Globals.player_health_current = Globals.player_health_starting
 	get_tree().reload_current_scene()
 
-
 func _on_animation_player_animation_finished(_anim_name):
 	is_attacking_weapon_right = !is_attacking_weapon_right
 	weapon_on_back_right.show()
-	pass # Replace with function body.
+	
+func weapon_right_unequip():
+	weapon_on_back_right.texture = null
+	weapon_right.queue_free()
 
-func weapon_display_change(sprite: Sprite2D):
-	if sprite == null:
-		weapon_on_back_right.texture = null
-		return
+func weapon_right_equip(sprite: Sprite2D):
 	weapon_on_back_right.texture = sprite.texture
+	weapon_right = PreloadScriptPaths.PRELOAD_WEAPON.instantiate()
+	add_child(weapon_right)
+	weapon_right.item_sprite.texture = sprite.texture
 
