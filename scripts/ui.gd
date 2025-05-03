@@ -16,6 +16,7 @@ class_name ui
 @onready var text_damage = %text_damage
 @onready var text_health = %text_health
 @onready var text_level = %text_level
+@onready var text_armor = %text_armor
 
 @onready var slot_shield = %slot_shield
 var player: player
@@ -81,10 +82,15 @@ func init(p: player):
 func ui_character_update():
 	print("character updated")
 	var equipment_list = %equipment_left.get_children() + %equipment_right.get_children()
+	Globals.player_armor = 0
 	for equipment in equipment_list:
+		if equipment.inv_item == null:
+			continue
 		print(equipment.inv_item)
+		Globals.player_armor += equipment.inv_item.item_armor		
 	ui_health_update()
 	text_damage.text = str(Globals.player_damage_min) + " - " + str(Globals.player_damage_max)
+	text_armor.text = str(Globals.player_armor)
 	# update stats
 
 func ui_health_update():

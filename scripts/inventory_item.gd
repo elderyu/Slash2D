@@ -7,6 +7,7 @@ var item_type: EquipmentType.Type
 var item_stack_count: int
 var damage_min: int
 var damage_max: int
+var item_armor: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,3 +20,4 @@ func init_from_loot(l: loot):
 	item_sprite.texture = l.sprite.texture
 	damage_min = l.damage_min
 	damage_max = l.damage_max
+	item_armor = l.item_armor

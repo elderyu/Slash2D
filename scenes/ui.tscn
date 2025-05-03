@@ -462,6 +462,10 @@ text = "Damage"
 layout_mode = 2
 text = "Health"
 
+[node name="armor" parent="character_sheet/HBoxContainer/VBoxContainer" instance=ExtResource("10_eyi44")]
+layout_mode = 2
+text = "Armor"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="character_sheet/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -488,6 +492,12 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_q66w0")
 text = "10"
+
+[node name="text_armor" type="Label" parent="character_sheet/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_q66w0")
+text = "0"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="character_sheet/HBoxContainer"]
 layout_mode = 2

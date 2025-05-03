@@ -12,6 +12,7 @@ var item_stack_count: int
 var damage_min: int
 var damage_max: int
 var img = null
+var item_armor: int
 
 func _on_ready():
 	$NinePatchRect.visible = Globals.is_loot_shown
@@ -25,6 +26,7 @@ func init(data: Dictionary) -> void:
 	damage_min = data.get("damage_min") if data.has("damage_min") else damage_min
 	damage_max = data.get("damage_max") if data.has("damage_max") else damage_max
 	sprite.texture = load("res://assets/sprites/item_icons/" + data.item_image)
+	item_armor = data.get("item_armor") if data.has("item_armor") else item_armor
 
 func set_image(image):
 	sprite.texture = load(image)

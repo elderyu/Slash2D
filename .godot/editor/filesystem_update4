@@ -20,3 +20,8 @@ res://scripts/damage_zone.gd
 res://enemies_pool.gd
 res://scripts/enemies_pool.gd
 res://scripts/spawn_area.gd
+res://scenes/inventory_slot.gd
+res://scripts/ui.gd
+res://scripts/globals.gd
+res://scripts/loot.gd
+res://scripts/inventory_item.gd

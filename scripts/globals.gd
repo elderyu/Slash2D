@@ -17,6 +17,7 @@ var level = 1
 var player_inventory_item_holding: inventory_item = null
 
 var is_loot_shown = false
+var player_armor = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
