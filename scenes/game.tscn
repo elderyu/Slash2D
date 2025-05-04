@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bvyq52udpx6sw"]
+[gd_scene load_steps=34 format=3 uid="uid://bvyq52udpx6sw"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_cq14r"]
 [ext_resource type="PackedScene" uid="uid://berqu5o75bccl" path="res://scenes/player.tscn" id="1_tw06h"]
@@ -19,8 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://8a1unh1oylby" path="res://scenes/lever.tscn" id="18_jealt"]
 [ext_resource type="PackedScene" uid="uid://ds71mq85gkd6n" path="res://scenes/label.tscn" id="18_ycl4i"]
 [ext_resource type="PackedScene" uid="uid://bw7g64dy8fdpu" path="res://scenes/spawn_area.tscn" id="19_4lwus"]
-[ext_resource type="PackedScene" uid="uid://bihlargix1cem" path="res://scenes/slime_purple.tscn" id="20_oltgy"]
-[ext_resource type="PackedScene" uid="uid://h2to774mikv1" path="res://scenes/enemy.tscn" id="21_eib7x"]
+[ext_resource type="PackedScene" uid="uid://djqn8thfrk2ey" path="res://scenes/slime_purple_2.tscn" id="20_3shbo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwysj"]
 texture = ExtResource("4_40dx5")
@@ -754,10 +753,7 @@ guaranteed_item_by_id = 1
 position = Vector2(11.5, 4.5)
 shape = SubResource("RectangleShape2D_klqpu")
 
-[node name="enemy" parent="." instance=ExtResource("20_oltgy")]
-position = Vector2(-249, -279)
-
-[node name="enemy2" parent="." instance=ExtResource("21_eib7x")]
-position = Vector2(-319, -126)
+[node name="enemy" parent="." instance=ExtResource("20_3shbo")]
+position = Vector2(-243, -295)
 
 [connection signal="animation_finished" from="player/inventory_chest" to="." method="_on_inventory_chest_animation_finished"]

@@ -122,7 +122,6 @@ func _on_health_show_area_mouse_exited():
 
 func _on_area_attack_range_body_entered(body):
 	if body is player:
-		is_player_in_attack_zone = true
 		attack_start()
 
 func attack_start():
@@ -137,14 +136,9 @@ func _on_timer_attack_timeout():
 	attack_damage_zone.stop()
 	speed = speed_normal
 	is_attacking = false
-	if is_player_in_attack_zone:
-		damage_zone_attack.damage_player()
-		damage_zone_cooldown.start()
-
-func _on_area_attack_range_body_exited(body):
-	if body is player:
-		is_player_in_attack_zone = false
+	damage_zone_attack.damage_player()
+	damage_zone_cooldown.start()
 
 func _on_damage_zone_cooldown_timeout():
-	if is_player_in_attack_zone:
+	if damage_zone_attack.p != null:
 		attack_start()

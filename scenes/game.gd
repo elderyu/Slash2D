@@ -30,6 +30,11 @@ func init():
 	$enemy.ui = ui
 	var enemy_data = EnemiesPool.enemies_table.filter(func(e: Dictionary): return e.id == 1)[0]
 	$enemy.init(enemy_data)
+	
+#	$enemy2.player = player
+#	$enemy2.ui = ui
+#	var enemy_data2 = EnemiesPool.enemies_table.filter(func(e: Dictionary): return e.id == 1)[0]
+#	$enemy2.init(enemy_data2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -61,6 +66,10 @@ func _process(_delta):
 		
 	if Input.is_action_just_pressed("dodge"):
 		player.dodge()
+		
+	if Input.is_action_just_pressed("show_menu"):
+		print("show menu")
+		get_tree().quit()
 
 func inventory_chest_toggle():
 	inventory_chest.play("close" if inventory_chest.visible else "open")
