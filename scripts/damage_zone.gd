@@ -12,4 +12,5 @@ func damage_player():
 		p.damage_player(self)
 
 func _on_body_exited(body):
-	p = null
+	if body is player:
+		p = null

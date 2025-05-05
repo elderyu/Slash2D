@@ -31,7 +31,7 @@ var is_aggroed = false
 
 var speed_normal = 50
 var speed_damaged = 10
-var speed_attacking = 50
+var speed_attacking = 25
 var speed = speed_normal
 var enemy_is_knocked_back = false
 
@@ -60,7 +60,7 @@ func _physics_process(delta):
 		move_and_collide(velocity * delta)
 		enemy_is_knocked_back = false
 
-	if is_aggroed && life > 0 && !is_attacking:
+	if is_aggroed && life > 0:
 		var direction = (player.position - position).normalized()
 		velocity = direction * speed
 		move_and_collide(velocity * delta)

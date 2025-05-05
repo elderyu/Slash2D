@@ -29,6 +29,9 @@ var is_performing_dodge = false
 var dodge_frame_count = 15
 var dodge_frame_current_count = 15
 
+func _on_ready():
+	animation_player.play("idle")
+
 func _physics_process(delta):
 	if is_performing_dodge:
 		dodge_frame_current_count -= 1
@@ -109,9 +112,16 @@ func _on_timer_timeout():
 	Globals.player_health_current = Globals.player_health_starting
 	get_tree().reload_current_scene()
 
-func _on_animation_player_animation_finished(_anim_name):
-	is_attacking_weapon_right = !is_attacking_weapon_right
-	weapon_on_back_right.show()
+func _on_animation_player_animation_finished(anim_name):
+	match anim_name:
+		"attack":
+			is_attacking_weapon_right = !is_attacking_weapon_right
+			weapon_on_back_right.show()
+		"idle":
+			animation_player.play("idle")
+		"dodge":
+			animation_player.play("idle")
+	
 	
 func weapon_right_unequip():
 	weapon_on_back_right.texture = null
@@ -126,3 +136,4 @@ func weapon_right_equip(sprite: Sprite2D):
 func dodge():
 	speed = SPEED_DODGE
 	is_performing_dodge = true
+	animation_player.play("dodge")
